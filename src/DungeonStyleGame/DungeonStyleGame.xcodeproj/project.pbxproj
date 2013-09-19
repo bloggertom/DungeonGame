@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
+		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
+		DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
+		DB20814117E8C58A00AAEF7F /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20814017E8C58A00AAEF7F /* SpriteKit.framework */; };
+		DB20814717E8C58A00AAEF7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB20814517E8C58A00AAEF7F /* InfoPlist.strings */; };
+		DB20814917E8C58A00AAEF7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20814817E8C58A00AAEF7F /* main.m */; };
+		DB20814D17E8C58A00AAEF7F /* DSGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20814C17E8C58A00AAEF7F /* DSGAppDelegate.m */; };
+		DB20815017E8C58A00AAEF7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB20814E17E8C58A00AAEF7F /* Main.storyboard */; };
+		DB20815317E8C58A00AAEF7F /* DSGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20815217E8C58A00AAEF7F /* DSGViewController.m */; };
+		DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20815517E8C58A00AAEF7F /* DSGLevel.m */; };
+		DB20815817E8C58A00AAEF7F /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = DB20815717E8C58A00AAEF7F /* Spaceship.png */; };
+		DB20815A17E8C58A00AAEF7F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB20815917E8C58A00AAEF7F /* Images.xcassets */; };
+		DB20816117E8C58A00AAEF7F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20816017E8C58A00AAEF7F /* XCTest.framework */; };
+		DB20816217E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
+		DB20816317E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
+		DB20816B17E8C58A00AAEF7F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB20816917E8C58A00AAEF7F /* InfoPlist.strings */; };
+		DB20816D17E8C58A00AAEF7F /* DungeonStyleGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20816C17E8C58A00AAEF7F /* DungeonStyleGameTests.m */; };
+		DB20817817E8D09200AAEF7F /* DSGTestLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20817717E8D09200AAEF7F /* DSGTestLevel.m */; };
+		DB20817D17E8D5BD00AAEF7F /* Map.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20817C17E8D5BD00AAEF7F /* Map.atlas */; };
+		DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20818017E904F900AAEF7F /* DSGCharacter.m */; };
+		DB20818417E908D500AAEF7F /* DSGHero.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20818317E908D500AAEF7F /* DSGHero.m */; };
+		DB20818717E90A3E00AAEF7F /* DSGWizard.m in Sources */ = {isa = PBXBuildFile; fileRef = DB20818617E90A3E00AAEF7F /* DSGWizard.m */; };
+		DB20818917E90D5300AAEF7F /* Wizard_Idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20818817E90D5300AAEF7F /* Wizard_Idle.atlas */; };
+		DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */; };
+		DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
+		DB20819517E92A4300AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
+		DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DB20816417E8C58A00AAEF7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB20812F17E8C58A00AAEF7F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB20813617E8C58A00AAEF7F;
+			remoteInfo = DungeonStyleGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		DB20813E17E8C58A00AAEF7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		DB20814017E8C58A00AAEF7F /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		DB20814417E8C58A00AAEF7F /* DungeonStyleGame-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DungeonStyleGame-Info.plist"; sourceTree = "<group>"; };
+		DB20814617E8C58A00AAEF7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB20814817E8C58A00AAEF7F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DB20814A17E8C58A00AAEF7F /* DungeonStyleGame-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DungeonStyleGame-Prefix.pch"; sourceTree = "<group>"; };
+		DB20814B17E8C58A00AAEF7F /* DSGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGAppDelegate.h; sourceTree = "<group>"; };
+		DB20814C17E8C58A00AAEF7F /* DSGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGAppDelegate.m; sourceTree = "<group>"; };
+		DB20814F17E8C58A00AAEF7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DB20815117E8C58A00AAEF7F /* DSGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGViewController.h; sourceTree = "<group>"; };
+		DB20815217E8C58A00AAEF7F /* DSGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGViewController.m; sourceTree = "<group>"; };
+		DB20815417E8C58A00AAEF7F /* DSGLevel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGLevel.h; sourceTree = "<group>"; };
+		DB20815517E8C58A00AAEF7F /* DSGLevel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSGLevel.m; sourceTree = "<group>"; };
+		DB20815717E8C58A00AAEF7F /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		DB20815917E8C58A00AAEF7F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DB20815F17E8C58A00AAEF7F /* DungeonStyleGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DungeonStyleGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB20816017E8C58A00AAEF7F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		DB20816817E8C58A00AAEF7F /* DungeonStyleGameTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DungeonStyleGameTests-Info.plist"; sourceTree = "<group>"; };
+		DB20816A17E8C58A00AAEF7F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DB20816C17E8C58A00AAEF7F /* DungeonStyleGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DungeonStyleGameTests.m; sourceTree = "<group>"; };
+		DB20817617E8D09200AAEF7F /* DSGTestLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGTestLevel.h; sourceTree = "<group>"; };
+		DB20817717E8D09200AAEF7F /* DSGTestLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGTestLevel.m; sourceTree = "<group>"; };
+		DB20817C17E8D5BD00AAEF7F /* Map.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Map.atlas; sourceTree = "<group>"; };
+		DB20817F17E904F900AAEF7F /* DSGCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGCharacter.h; sourceTree = "<group>"; };
+		DB20818017E904F900AAEF7F /* DSGCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGCharacter.m; sourceTree = "<group>"; };
+		DB20818217E908D500AAEF7F /* DSGHero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGHero.h; sourceTree = "<group>"; };
+		DB20818317E908D500AAEF7F /* DSGHero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGHero.m; sourceTree = "<group>"; };
+		DB20818517E90A3E00AAEF7F /* DSGWizard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGWizard.h; sourceTree = "<group>"; };
+		DB20818617E90A3E00AAEF7F /* DSGWizard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGWizard.m; sourceTree = "<group>"; };
+		DB20818817E90D5300AAEF7F /* Wizard_Idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Idle.atlas; sourceTree = "<group>"; };
+		DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Right.atlas; sourceTree = "<group>"; };
+		DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Firing_Right.atlas; sourceTree = "<group>"; };
+		DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Left.atlas; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DB20813417E8C58A00AAEF7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */,
+				DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */,
+				DB20814117E8C58A00AAEF7F /* SpriteKit.framework in Frameworks */,
+				DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB20815C17E8C58A00AAEF7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20816117E8C58A00AAEF7F /* XCTest.framework in Frameworks */,
+				DB20816317E8C58A00AAEF7F /* UIKit.framework in Frameworks */,
+				DB20816217E8C58A00AAEF7F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DB20812E17E8C58A00AAEF7F = {
+			isa = PBXGroup;
+			children = (
+				DB20817A17E8D25300AAEF7F /* Assets */,
+				DB20814217E8C58A00AAEF7F /* DungeonStyleGame */,
+				DB20816617E8C58A00AAEF7F /* DungeonStyleGameTests */,
+				DB20813917E8C58A00AAEF7F /* Frameworks */,
+				DB20813817E8C58A00AAEF7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DB20813817E8C58A00AAEF7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */,
+				DB20815F17E8C58A00AAEF7F /* DungeonStyleGameTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DB20813917E8C58A00AAEF7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DB20813A17E8C58A00AAEF7F /* Foundation.framework */,
+				DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */,
+				DB20813E17E8C58A00AAEF7F /* UIKit.framework */,
+				DB20814017E8C58A00AAEF7F /* SpriteKit.framework */,
+				DB20816017E8C58A00AAEF7F /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB20814217E8C58A00AAEF7F /* DungeonStyleGame */ = {
+			isa = PBXGroup;
+			children = (
+				DB20814B17E8C58A00AAEF7F /* DSGAppDelegate.h */,
+				DB20814C17E8C58A00AAEF7F /* DSGAppDelegate.m */,
+				DB20814E17E8C58A00AAEF7F /* Main.storyboard */,
+				DB20815117E8C58A00AAEF7F /* DSGViewController.h */,
+				DB20815217E8C58A00AAEF7F /* DSGViewController.m */,
+				DB20817917E8D23B00AAEF7F /* Levels */,
+				DB20817E17E904B500AAEF7F /* Characters */,
+				DB20815717E8C58A00AAEF7F /* Spaceship.png */,
+				DB20815917E8C58A00AAEF7F /* Images.xcassets */,
+				DB20814317E8C58A00AAEF7F /* Supporting Files */,
+			);
+			path = DungeonStyleGame;
+			sourceTree = "<group>";
+		};
+		DB20814317E8C58A00AAEF7F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB20814417E8C58A00AAEF7F /* DungeonStyleGame-Info.plist */,
+				DB20814517E8C58A00AAEF7F /* InfoPlist.strings */,
+				DB20814817E8C58A00AAEF7F /* main.m */,
+				DB20814A17E8C58A00AAEF7F /* DungeonStyleGame-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB20816617E8C58A00AAEF7F /* DungeonStyleGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB20816C17E8C58A00AAEF7F /* DungeonStyleGameTests.m */,
+				DB20816717E8C58A00AAEF7F /* Supporting Files */,
+			);
+			path = DungeonStyleGameTests;
+			sourceTree = "<group>";
+		};
+		DB20816717E8C58A00AAEF7F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB20816817E8C58A00AAEF7F /* DungeonStyleGameTests-Info.plist */,
+				DB20816917E8C58A00AAEF7F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DB20817917E8D23B00AAEF7F /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				DB20815417E8C58A00AAEF7F /* DSGLevel.h */,
+				DB20815517E8C58A00AAEF7F /* DSGLevel.m */,
+				DB20817617E8D09200AAEF7F /* DSGTestLevel.h */,
+				DB20817717E8D09200AAEF7F /* DSGTestLevel.m */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		DB20817A17E8D25300AAEF7F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DB20818A17E90D5700AAEF7F /* Wizard */,
+				DB20817B17E8D52200AAEF7F /* Map */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		DB20817B17E8D52200AAEF7F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DB20817C17E8D5BD00AAEF7F /* Map.atlas */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		DB20817E17E904B500AAEF7F /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				DB20817F17E904F900AAEF7F /* DSGCharacter.h */,
+				DB20818017E904F900AAEF7F /* DSGCharacter.m */,
+				DB20818217E908D500AAEF7F /* DSGHero.h */,
+				DB20818317E908D500AAEF7F /* DSGHero.m */,
+				DB20818517E90A3E00AAEF7F /* DSGWizard.h */,
+				DB20818617E90A3E00AAEF7F /* DSGWizard.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		DB20818A17E90D5700AAEF7F /* Wizard */ = {
+			isa = PBXGroup;
+			children = (
+				DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */,
+				DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */,
+				DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */,
+				DB20818817E90D5300AAEF7F /* Wizard_Idle.atlas */,
+			);
+			name = Wizard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DB20813617E8C58A00AAEF7F /* DungeonStyleGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB20817017E8C58A00AAEF7F /* Build configuration list for PBXNativeTarget "DungeonStyleGame" */;
+			buildPhases = (
+				DB20813317E8C58A00AAEF7F /* Sources */,
+				DB20813417E8C58A00AAEF7F /* Frameworks */,
+				DB20813517E8C58A00AAEF7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DungeonStyleGame;
+			productName = DungeonStyleGame;
+			productReference = DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DB20815E17E8C58A00AAEF7F /* DungeonStyleGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB20817317E8C58A00AAEF7F /* Build configuration list for PBXNativeTarget "DungeonStyleGameTests" */;
+			buildPhases = (
+				DB20815B17E8C58A00AAEF7F /* Sources */,
+				DB20815C17E8C58A00AAEF7F /* Frameworks */,
+				DB20815D17E8C58A00AAEF7F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB20816517E8C58A00AAEF7F /* PBXTargetDependency */,
+			);
+			name = DungeonStyleGameTests;
+			productName = DungeonStyleGameTests;
+			productReference = DB20815F17E8C58A00AAEF7F /* DungeonStyleGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DB20812F17E8C58A00AAEF7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DSG;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Thomas Wilson";
+				TargetAttributes = {
+					DB20813617E8C58A00AAEF7F = {
+						DevelopmentTeam = BQ2U65ZE29;
+					};
+					DB20815E17E8C58A00AAEF7F = {
+						TestTargetID = DB20813617E8C58A00AAEF7F;
+					};
+				};
+			};
+			buildConfigurationList = DB20813217E8C58A00AAEF7F /* Build configuration list for PBXProject "DungeonStyleGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DB20812E17E8C58A00AAEF7F;
+			productRefGroup = DB20813817E8C58A00AAEF7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DB20813617E8C58A00AAEF7F /* DungeonStyleGame */,
+				DB20815E17E8C58A00AAEF7F /* DungeonStyleGameTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DB20813517E8C58A00AAEF7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */,
+				DB20814717E8C58A00AAEF7F /* InfoPlist.strings in Resources */,
+				DB20815A17E8C58A00AAEF7F /* Images.xcassets in Resources */,
+				DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */,
+				DB20817D17E8D5BD00AAEF7F /* Map.atlas in Resources */,
+				DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */,
+				DB20815817E8C58A00AAEF7F /* Spaceship.png in Resources */,
+				DB20818917E90D5300AAEF7F /* Wizard_Idle.atlas in Resources */,
+				DB20815017E8C58A00AAEF7F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB20815D17E8C58A00AAEF7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20819517E92A4300AAEF7F /* Wizard_Firing_Right.atlas in Resources */,
+				DB20816B17E8C58A00AAEF7F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DB20813317E8C58A00AAEF7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20815317E8C58A00AAEF7F /* DSGViewController.m in Sources */,
+				DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */,
+				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
+				DB20814917E8C58A00AAEF7F /* main.m in Sources */,
+				DB20818417E908D500AAEF7F /* DSGHero.m in Sources */,
+				DB20818717E90A3E00AAEF7F /* DSGWizard.m in Sources */,
+				DB20814D17E8C58A00AAEF7F /* DSGAppDelegate.m in Sources */,
+				DB20817817E8D09200AAEF7F /* DSGTestLevel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB20815B17E8C58A00AAEF7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB20816D17E8C58A00AAEF7F /* DungeonStyleGameTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DB20816517E8C58A00AAEF7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB20813617E8C58A00AAEF7F /* DungeonStyleGame */;
+			targetProxy = DB20816417E8C58A00AAEF7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DB20814517E8C58A00AAEF7F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB20814617E8C58A00AAEF7F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		DB20814E17E8C58A00AAEF7F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB20814F17E8C58A00AAEF7F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DB20816917E8C58A00AAEF7F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB20816A17E8C58A00AAEF7F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DB20816E17E8C58A00AAEF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		DB20816F17E8C58A00AAEF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DB20817117E8C58A00AAEF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DungeonStyleGame/DungeonStyleGame-Prefix.pch";
+				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		DB20817217E8C58A00AAEF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DungeonStyleGame/DungeonStyleGame-Prefix.pch";
+				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		DB20817417E8C58A00AAEF7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DungeonStyleGame.app/DungeonStyleGame";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DungeonStyleGame/DungeonStyleGame-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "DungeonStyleGameTests/DungeonStyleGameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		DB20817517E8C58A00AAEF7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DungeonStyleGame.app/DungeonStyleGame";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DungeonStyleGame/DungeonStyleGame-Prefix.pch";
+				INFOPLIST_FILE = "DungeonStyleGameTests/DungeonStyleGameTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DB20813217E8C58A00AAEF7F /* Build configuration list for PBXProject "DungeonStyleGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB20816E17E8C58A00AAEF7F /* Debug */,
+				DB20816F17E8C58A00AAEF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB20817017E8C58A00AAEF7F /* Build configuration list for PBXNativeTarget "DungeonStyleGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB20817117E8C58A00AAEF7F /* Debug */,
+				DB20817217E8C58A00AAEF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB20817317E8C58A00AAEF7F /* Build configuration list for PBXNativeTarget "DungeonStyleGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB20817417E8C58A00AAEF7F /* Debug */,
+				DB20817517E8C58A00AAEF7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DB20812F17E8C58A00AAEF7F /* Project object */;
+}
