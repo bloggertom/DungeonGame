@@ -1,7 +1,9 @@
 This is a firt attempt at trying to create a game for the iPad.
 
 Currently have background tiles appearing along with a wizard character that
-will walk across screen when a location is poked. I'm following the 
-Advanture example code provided by apple as a base for this programe.
+will walk across screen when a location is tapped. There is also an attack
+button which can be used to fire a magic missile, this currently only works
+when facing to the right. I'm following the Advanture example code provided 
+:by apple as a base for this programe.
 
 Game Writen for iOS7 in objective - C using the new Sprite Kit.
