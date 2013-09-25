@@ -12,5 +12,11 @@
 @interface DSGViewController : UIViewController
 
 @property (nonatomic)IBOutlet UIButton *startButton;
+@property (nonatomic)IBOutlet UIButton *attackButton;
+
 -(IBAction)start:(id)sender;
+-(IBAction)attack:(id)sender;
+
+
+
 @end

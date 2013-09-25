@@ -34,6 +34,7 @@ typedef enum : uint8_t{
 @property (nonatomic)DSGAnimationState requestedAnimation;
 @property (nonatomic)CGPoint targetLocation;
 @property (nonatomic, setter = requestMovement:)BOOL movementRequested;
+@property (nonatomic, setter = requestAttack:)BOOL attackRequested;
 @property (nonatomic)BOOL isAnimated;
 
 
@@ -41,6 +42,11 @@ typedef enum : uint8_t{
 -(void)turnToFacePosition:(CGPoint)position;
 -(void)moveTowardsTargetLocationForTimeIntervale:(NSTimeInterval)timeInterval;
 -(void)updateForTimeIntervale:(NSTimeInterval)time;
+
+-(void)fireAttackingAnimation;
+-(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state;
+-(void)animationDidFinish:(DSGAnimationState)animationState;
+
 +(void)loadAssets;
 
 -(NSArray *)idleFrames;

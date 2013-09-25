@@ -19,6 +19,7 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+	_attackButton.alpha = 0.0;
 	
 	NSLog(@"Height: %f, Width %f", self.view.frame.size.height, self.view.frame.size.width);
 	
@@ -59,12 +60,19 @@
 -(IBAction)start:(id)sender{
 	SKView *skView = (SKView*)self.view;
 	DSGTestLevel *scene = (DSGTestLevel *)skView.scene;
-	[UIView animateWithDuration:2 animations:^{
+	[UIView animateWithDuration:1 animations:^{
 		self.startButton.alpha = 0;
+		self.attackButton.alpha = 1;
 	} completion:^(BOOL finished) {
 		[scene startLevel];
 	}];
 	
 	
+}
+
+-(IBAction)attack:(id)sender{
+	SKView *view = (SKView*)self.view;
+	DSGTestLevel *scene = (DSGTestLevel *)view.scene;
+	[scene requestAttack];
 }
 @end

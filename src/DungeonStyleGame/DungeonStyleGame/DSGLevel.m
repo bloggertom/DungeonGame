@@ -56,7 +56,11 @@
 			self.hero.requestedAnimation = DSGAnimationStateIdle;
 		}
 		
-	}else{
+	}
+	if (self.hero.attackRequested) {
+		self.hero.attackRequested = NO;
+		self.hero.requestedAnimation = DSGAnimationStateAttacking;
+		
 		
 	}
 }
@@ -67,23 +71,8 @@
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	NSLog(@"Touch Detected");
-    /* Called when a touch begins
+		//NSLog(@"Touch Detected");
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
-	 */
 	if([touches count] == 1 && ![self.hero targetTouch]){
 		UITouch *touch = [touches anyObject];
 		CGPoint position = [touch locationInNode:self];
@@ -92,7 +81,7 @@
 		[self.hero setTargetTouch:touch];
 		[self.hero requestMovement:YES];
 		
-		NSLog(@"In if");
+		
 		/*
 		SKNode *nodeAtTouch = [self nodeAtPoint:position];
 		
@@ -109,7 +98,9 @@
 	}
 }
 
-
+-(void)requestAttack{
+	[self.hero requestAttack:YES];
+}
 
 
 /*
@@ -121,7 +112,6 @@
 	SKNode *layerNode = [_layers objectAtIndex:layer];
 	[layerNode addChild:node];
 }
-
 /*
  * Static methods
  */

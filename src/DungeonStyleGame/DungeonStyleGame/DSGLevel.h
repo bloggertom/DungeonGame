@@ -30,6 +30,7 @@ typedef enum : uint8_t {
 
 -(void)addChildNode:(SKNode*)node atWorldLayer:(DSGWorldLayer)layer;
 
+-(void)requestAttack;
 +(void)loadAssetsWithHandler:(DSGLoadAssesCompleteHandler)callback;
 
 +(void)loadAssets;

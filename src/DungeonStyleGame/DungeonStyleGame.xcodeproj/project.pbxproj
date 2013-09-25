@@ -34,6 +34,7 @@
 		DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
 		DB20819517E92A4300AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
 		DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */; };
+		DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Right.atlas; sourceTree = "<group>"; };
 		DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Firing_Right.atlas; sourceTree = "<group>"; };
 		DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Left.atlas; sourceTree = "<group>"; };
+		DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Magic_Missile_Right.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 		DB20818A17E90D5700AAEF7F /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */,
 				DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */,
 				DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */,
 				DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */,
@@ -323,6 +326,7 @@
 				DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */,
 				DB20814717E8C58A00AAEF7F /* InfoPlist.strings in Resources */,
 				DB20815A17E8C58A00AAEF7F /* Images.xcassets in Resources */,
+				DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */,
 				DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */,
 				DB20817D17E8D5BD00AAEF7F /* Map.atlas in Resources */,
 				DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */,

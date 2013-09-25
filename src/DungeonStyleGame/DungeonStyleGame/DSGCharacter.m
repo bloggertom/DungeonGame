@@ -38,11 +38,15 @@
 	
 	switch (_requestedAnimation) {
 		case DSGAnimationStateWalking:
+				//NSLog(@"Running walking animation");
 			[self fireWalkAnimation];
 			break;
 		case DSGAnimationStateIdle:
-			NSLog(@"Running idle");
+				//NSLog(@"Running idle");
 			[self idle];
+			break;
+		case DSGAnimationStateAttacking:
+			[self fireAttackingAnimation];
 			break;
 		default:
 			break;
@@ -53,40 +57,56 @@
 -(void)fireWalkAnimation{
 	switch (_facing) {
 		case DSGCharacterFacingRight:
-			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right"];
+			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right" forState:(DSGAnimationState)DSGAnimationStateWalking];
 			break;
 		case DSGCharacterFacingLeft:
-			[self fireAnimation:[self walkingLeftFrames] forKey:@"walk_left"];
+			[self fireAnimation:[self walkingLeftFrames] forKey:@"walk_left" forState:(DSGAnimationState)DSGAnimationStateWalking];
 			break;
 		default:
-			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right"];
+			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right" forState:(DSGAnimationState)DSGAnimationStateWalking];
 	}
 }
 
--(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key{
+-(void)fireAttackingAnimation{
+		//Overridden
+}
+
+-(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state{
 	SKAction *action = [self actionForKey:key];
+		//NSLog(@"%@",key);
 	if (action) {
+			//NSLog(@"returning");
 		return;
 	}
 	
-	SKAction *animation = [SKAction animateWithTextures:frames timePerFrame:1.0/animationSpeed];
-	/*SKAction *completion = [SKAction runBlock:^{
-		if(!self.movementRequested){
-			[self idle];
-		}
+	SKAction *animation = [SKAction animateWithTextures:frames timePerFrame:1.0/animationSpeed resize:YES restore:NO];
+	SKAction *completion = [SKAction runBlock:^{
+			[self animationHasFinished:(DSGAnimationState)state];
+		
 	}];
-	SKAction *squence = [SKAction sequence:@[animation, completion]];*/
-	[self runAction:animation withKey:key];
+	SKAction *squence = [SKAction sequence:@[animation, completion]];
+	[self runAction:squence withKey:key];
 }
 
 -(void)idle{
 	
-	SKTexture *n =[[self idleFrames]objectAtIndex:self.isFacing];
-	NSArray *frames = [NSArray arrayWithObject:n];
+	SKTexture *n =[[self idleFrames]objectAtIndex:_facing];
+	NSMutableArray *frames = [[NSMutableArray alloc]init];
+		//for some reason sprite jitters to walking animation sometimes dispite restore being set to NO
+	for(int i=0; i<4; i++){
+		[frames addObject:n];
+	}
 		//NSLog(@"Firing idel");
-	[self fireAnimation:frames forKey:[NSString stringWithFormat:@"Idelframe_%d",self.facing]];
+	[self fireAnimation:frames forKey:[NSString stringWithFormat:@"Idelframe_%d",_facing]forState:(DSGAnimationState)DSGAnimationStateIdle];
 }
 
+-(void)animationHasFinished:(DSGAnimationState)animationState{
+	[self animationDidFinish:(DSGAnimationState)animationState];
+}
+
+-(void)animationDidFinish:(DSGAnimationState)animationState{
+		//overridden
+}
 
 #pragma mark - Location Processing
 -(void)turnToFacePosition:(CGPoint)position{
@@ -94,15 +114,17 @@
 	double degrees = rad * 180 /M_PI;
 	
 	if (degrees <= 45 && degrees > -45) {
+		NSLog(@"Facing Up");
 		_facing = DSGCharacterFacingUp;
 	}else if (degrees <=135 && degrees > 45 ){
 		_facing = DSGCharacterFacingRight;
-	}else if (degrees <= -135 && degrees >135 ){
-		_facing = DSGCharacterFacingDown;
 	}else if (degrees <= -45 && degrees > -135){
 		_facing = DSGCharacterFacingLeft;
+	}else if (degrees <= -135 || degrees >135 ){
+		NSLog(@"Facing Down");
+		_facing = DSGCharacterFacingDown;
 	}
-	NSLog(@"%d", _facing);
+	NSLog(@"Facing %d, degrees %f", _facing, degrees);
 }
 
 -(CGFloat)calculateAngleBetweenPoint:(CGPoint)first andPoint:(CGPoint)second{
@@ -150,10 +172,12 @@
 	_movementRequested = movementRequested;
 }
 
-
-
+-(void)requestAttack:(BOOL)attackRequested{
+	_attackRequested = attackRequested;
+}
 
 -(DSGCharacterFacingDirection)isFacing{
+
 	return _facing;
 }
 

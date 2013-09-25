@@ -1,7 +1,7 @@
-This is a firt attempt at trying to create a game for the iPad,
+This is a firt attempt at trying to create a game for the iPad.
 
-At the moment this only includes some sprites and animations
-which will be used in game.
+Currently have background tiles appearing along with a wizard character that
+will walk across screen when a location is poked. I'm following the 
+Advanture example code provided by apple as a base for this programe.
 
-Game Writen for iOS7 in objective - C. more details will be released upon
-iOS7's release.
+Game Writen for iOS7 in objective - C using the new Sprite Kit.
