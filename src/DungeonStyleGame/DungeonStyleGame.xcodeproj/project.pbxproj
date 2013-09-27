@@ -33,6 +33,10 @@
 		DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */; };
 		DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
 		DB20819517E92A4300AAEF7F /* Wizard_Firing_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */; };
+		DB42CAF417F4EA4C00BE10EA /* MagicMissileEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF217F4EA4C00BE10EA /* MagicMissileEmitter.sks */; };
+		DB42CAF517F4EA4C00BE10EA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF317F4EA4C00BE10EA /* spark.png */; };
+		DB42CAF717F4ED8100BE10EA /* emitter_partical.png in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF617F4ED8100BE10EA /* emitter_partical.png */; };
+		DBA429DA17F62683009CCC30 /* Wizard_Walking_Up.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */; };
 		DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */; };
 		DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */; };
 /* End PBXBuildFile section */
@@ -83,6 +87,10 @@
 		DB20818817E90D5300AAEF7F /* Wizard_Idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Idle.atlas; sourceTree = "<group>"; };
 		DB20818B17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Right.atlas; sourceTree = "<group>"; };
 		DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Firing_Right.atlas; sourceTree = "<group>"; };
+		DB42CAF217F4EA4C00BE10EA /* MagicMissileEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicMissileEmitter.sks; sourceTree = "<group>"; };
+		DB42CAF317F4EA4C00BE10EA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		DB42CAF617F4ED8100BE10EA /* emitter_partical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emitter_partical.png; sourceTree = "<group>"; };
+		DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Up.atlas; sourceTree = "<group>"; };
 		DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Left.atlas; sourceTree = "<group>"; };
 		DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Magic_Missile_Right.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +212,7 @@
 		DB20817A17E8D25300AAEF7F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DB42CAF117F4E9F300BE10EA /* Emitters */,
 				DB20818A17E90D5700AAEF7F /* Wizard */,
 				DB20817B17E8D52200AAEF7F /* Map */,
 			);
@@ -234,6 +243,7 @@
 		DB20818A17E90D5700AAEF7F /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */,
 				DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */,
 				DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */,
 				DB20819317E9177700AAEF7F /* Wizard_Firing_Right.atlas */,
@@ -241,6 +251,16 @@
 				DB20818817E90D5300AAEF7F /* Wizard_Idle.atlas */,
 			);
 			name = Wizard;
+			sourceTree = "<group>";
+		};
+		DB42CAF117F4E9F300BE10EA /* Emitters */ = {
+			isa = PBXGroup;
+			children = (
+				DB42CAF617F4ED8100BE10EA /* emitter_partical.png */,
+				DB42CAF217F4EA4C00BE10EA /* MagicMissileEmitter.sks */,
+				DB42CAF317F4EA4C00BE10EA /* spark.png */,
+			);
+			name = Emitters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,9 +344,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB20819417E9177700AAEF7F /* Wizard_Firing_Right.atlas in Resources */,
+				DBA429DA17F62683009CCC30 /* Wizard_Walking_Up.atlas in Resources */,
+				DB42CAF517F4EA4C00BE10EA /* spark.png in Resources */,
+				DB42CAF717F4ED8100BE10EA /* emitter_partical.png in Resources */,
 				DB20814717E8C58A00AAEF7F /* InfoPlist.strings in Resources */,
 				DB20815A17E8C58A00AAEF7F /* Images.xcassets in Resources */,
 				DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */,
+				DB42CAF417F4EA4C00BE10EA /* MagicMissileEmitter.sks in Resources */,
 				DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */,
 				DB20817D17E8D5BD00AAEF7F /* Map.atlas in Resources */,
 				DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */,

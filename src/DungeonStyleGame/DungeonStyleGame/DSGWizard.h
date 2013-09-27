@@ -10,6 +10,7 @@
 
 @interface DSGWizard : DSGHero
 
+@property (nonatomic)SKEmitterNode *magicEmitter;
 
 -(id)initatPosition:(CGPoint)position;
 

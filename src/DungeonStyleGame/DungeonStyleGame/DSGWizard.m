@@ -11,7 +11,8 @@
 
 #define kNIdelFrames 4
 #define kNWalkingRightFrames 8
-#define kNwalkingLeftFrames 8
+#define kNWalkingLeftFrames 8
+#define kNWalkingUpFrames 8
 #define kNFiringRightFrames 8
 
 #define kMagicMissileFrames 4
@@ -21,6 +22,9 @@
 -(id)initatPosition:(CGPoint)position{
 	SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Wizard_Idle"];
 	SKTexture *texture = [atlas textureNamed:@"Idle_right"];
+	
+	NSString *emitterpath = [[NSBundle mainBundle]pathForResource:@"MagicMissileEmitter" ofType:@"sks"];
+	_magicEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterpath];
 	
 	return [super initWithTexture:texture atPosition:position];
 }
@@ -75,13 +79,6 @@
 	SKAction *fireSequence = [SKAction sequence:@[pause,fire]];
 	
 	SKAction *group = [SKAction group:@[animation, fireSequence]];
-	/*SKAction *completion = [SKAction runBlock:^{
-		self.requestedAnimation = DSGAnimationStateIdle;
-		
-	}];
-	
-	SKAction *runMe = [SKAction sequence:@[group, completion]];*/
-	
 	[self runAction:group withKey:@"firing"];
 		
 }
@@ -90,6 +87,13 @@
 	DSGLevel *scene = (DSGLevel *)[self scene];
 	
 	SKSpriteNode *magicMissile = [SKSpriteNode spriteNodeWithTexture:[[self magicMissileRightFrames]firstObject]];
+	
+	
+	SKEmitterNode *emitter = [[self magicEmitter]copy];
+	emitter.targetNode = [self.scene childNodeWithName:@"world"];
+	[magicMissile addChild:emitter];
+	
+	
 	SKAction *animation = [SKAction animateWithTextures:[self magicMissileRightFrames] timePerFrame:0.2 resize:YES restore:NO];
 	SKAction *repeater = [SKAction repeatActionForever:animation];
 	
@@ -152,11 +156,20 @@
 		}
 		
 			//walking left frames
-		sWalkingLeftFrames = [[NSMutableArray alloc]initWithCapacity:kNwalkingLeftFrames];
+		sWalkingLeftFrames = [[NSMutableArray alloc]initWithCapacity:kNWalkingLeftFrames];
 		SKTextureAtlas *wLeft = [SKTextureAtlas atlasNamed:@"Wizard_Walking_Left"];
-		for (int i=1; i<kNwalkingLeftFrames; i++) {
+		for (int i=1; i<kNWalkingLeftFrames; i++) {
 			SKTexture *frame = [wLeft textureNamed:[NSString stringWithFormat:@"Walking_left_%d",i]];
 			[sWalkingLeftFrames addObject:frame];
+		}
+		
+		
+			//walking up frames
+		sWalkingUpFrames = [[NSMutableArray alloc]initWithCapacity:kNWalkingUpFrames];
+		SKTextureAtlas *wUp = [SKTextureAtlas atlasNamed:@"Wizard_Walking_Up"];
+		for (int i=1; i<kNWalkingUpFrames; i++) {
+			SKTexture *frame = [wUp textureNamed:[NSString stringWithFormat:@"Walking_up_%d",i]];
+			[sWalkingUpFrames addObject:frame];
 		}
 		
 			//firing right frames

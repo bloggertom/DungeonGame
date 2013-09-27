@@ -62,6 +62,10 @@
 		case DSGCharacterFacingLeft:
 			[self fireAnimation:[self walkingLeftFrames] forKey:@"walk_left" forState:(DSGAnimationState)DSGAnimationStateWalking];
 			break;
+		case DSGCharacterFacingUp:
+			
+			[self fireAnimation:[self walkingUpFrames] forKey:@"walking_up" forState:(DSGAnimationState)DSGAnimationStateWalking];
+			break;
 		default:
 			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right" forState:(DSGAnimationState)DSGAnimationStateWalking];
 	}
