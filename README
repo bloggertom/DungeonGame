@@ -6,4 +6,7 @@ button which can be used to fire a magic missile, this currently only works
 when facing to the right. I'm following the Advanture example code provided 
 :by apple as a base for this programe.
 
+Currently crashes if you attempt to attack left, this is probably
+due to it trying to run frames which arn't there.
+
 Game Writen for iOS7 in objective - C using the new Sprite Kit.
