@@ -147,10 +147,6 @@
 	CGFloat deltaT = self.movementSpeed * timeInterval;
 	
 	CGFloat ang = atan2f(deltaX, deltaY);
-	
-		//	NSLog(@"ang %f", ang);
-		//	NSLog(@"sin-ang %f, cosf-ang %f", sinf(ang), cosf(ang));
-		//	NSLog(@"deltaT %f", deltaT);
 	CGFloat newX = currentLocation.x + sinf(ang)*deltaT;
 	CGFloat newY = currentLocation.y + cosf(ang)*deltaT;
 	
@@ -163,6 +159,26 @@
 		
 	}
 	self.requestedAnimation = DSGAnimationStateWalking;
+}
+
+-(void)moveInDirection:(CGPoint)direction withTimeInterval:(NSTimeInterval)timeInterval{
+		//to be completed
+		//Used for iphone joystick
+	CGPoint currentLocation = self.position;
+	CGFloat deltaX = self.movementSpeed * direction.x;
+	CGFloat deltaY = self.movementSpeed * direction.y;
+	CGFloat deltaT = self.movementSpeed * timeInterval;
+	
+	CGPoint targetPosition = CGPointMake(currentLocation.x - deltaX, currentLocation.y - deltaY);
+	CGFloat ang = atan2f(deltaX, deltaY);
+	
+	CGFloat distanceRemaining = hypotf(deltaX, deltaY);
+	
+	if (distanceRemaining < deltaT) {
+		self.position = targetPosition;
+	}else{
+		self.position = CGPointMake(currentLocation.x + sinf(ang)*deltaT, currentLocation.y + cosf(ang)*deltaT);
+	}
 }
 
 -(void)setTargetLocation:(CGPoint)targetLocation{

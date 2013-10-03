@@ -51,7 +51,6 @@
 		if (!CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
 			[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];
 		}else {
-			NSLog(@"Setting movement to no");
 			self.hero.movementRequested = NO;
 			self.hero.requestedAnimation = DSGAnimationStateIdle;
 		}
@@ -69,7 +68,8 @@
 -(void)updateForTimeIntervale:(NSTimeInterval)time{
 		//overridden
 }
-
+#pragma mark - Controls
+#pragma mark - Touches
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 		//NSLog(@"Touch Detected");
     

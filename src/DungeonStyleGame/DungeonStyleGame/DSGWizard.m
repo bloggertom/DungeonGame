@@ -14,9 +14,10 @@
 #define kNWalkingLeftFrames 8
 #define kNWalkingUpFrames 8
 #define kNFiringRightFrames 8
+#define kNFiringLeftFrames 8
 
 #define kMagicMissileFrames 4
-#define kMagicMissileDistance 1000;
+#define kMagicMissileDistance 1000
 @implementation DSGWizard
 
 -(id)initatPosition:(CGPoint)position{
@@ -60,15 +61,13 @@
 	}
 }
 -(void)fireMagicMissileWithAnimationFrames:(NSArray*)frames{
-	SKAction *action = [self actionForKey:@"firing_right"];
+	SKAction *action = [self actionForKey:@"firing"];
 	if (action) {
 		return;
 	}
 	
-		//SKAction *animation = [SKAction animateWithTextures:frames timePerFrame:0.1 resize:YES restore:NO];
-	
 	SKAction *animation = [SKAction runBlock:^{
-		[self fireAnimation:frames forKey:@"firing_right" forState:DSGAnimationStateAttacking];
+		[self fireAnimation:frames forKey:@"firing" forState:DSGAnimationStateAttacking];
 	}];
 	SKAction *pause = [SKAction waitForDuration:0.4];
 	SKAction *fire = [SKAction runBlock:^{
@@ -79,7 +78,7 @@
 	SKAction *fireSequence = [SKAction sequence:@[pause,fire]];
 	
 	SKAction *group = [SKAction group:@[animation, fireSequence]];
-	[self runAction:group withKey:@"firing"];
+	[self runAction:group withKey:@"missile"];
 		
 }
 -(void)fireMagicMissile{
@@ -98,21 +97,18 @@
 	SKAction *repeater = [SKAction repeatActionForever:animation];
 	
 	CGPoint p = self.position;
-	p.x += 20;
-	magicMissile.position = p;
 	
-	[magicMissile runAction:repeater];
-	
-	[scene addChildNode:magicMissile atWorldLayer:DSGCharacterLayer];
 	
 	CGFloat x = 0;
 	CGFloat y = 0;
 	switch (self.isFacing) {
 		case DSGCharacterFacingRight:
 			x = kMagicMissileDistance;
+			p.x += 20;
 			break;
 		case DSGCharacterFacingLeft:
 			x = -kMagicMissileDistance;
+			p.x -=20;
 			break;
 		case DSGCharacterFacingDown:
 			y = -kMagicMissileDistance;
@@ -124,6 +120,13 @@
 		default:
 			break;
 	}
+	
+	
+	magicMissile.position = p;
+	
+	[magicMissile runAction:repeater];
+	
+	[scene addChildNode:magicMissile atWorldLayer:DSGCharacterLayer];
 	
 	SKAction *movement = [SKAction moveByX:x y:y duration:1];
 	SKAction *removal = [SKAction removeFromParent];
@@ -181,7 +184,14 @@
 			[sFiringRightFrames addObject:frame];
 		}
 		
-		
+			//firing left frames
+		sFiringLeftFrames = [[NSMutableArray alloc]initWithCapacity:kNFiringLeftFrames];
+		SKTextureAtlas *fLeft = [SKTextureAtlas atlasNamed:@"Wizard_Firing_Left"];
+		for (int i = 1; i<kNFiringLeftFrames; i++) {
+			SKTexture *frame = [fLeft textureNamed:[NSString stringWithFormat:@"Firing_left_%d",i]];
+			[sFiringLeftFrames addObject:frame];
+			NSLog(@"Loading firing left frame %d",i);
+		}
 			//Missile Frames
 		sMagicMissileRightFrames = [[NSMutableArray alloc]initWithCapacity:kMagicMissileFrames];
 		SKTextureAtlas *fMM = [SKTextureAtlas atlasNamed:@"Magic_Missile_Right"];
