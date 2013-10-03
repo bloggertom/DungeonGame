@@ -1,12 +1,12 @@
-This is a firt attempt at trying to create a game for the iPad.
+This is a firt attempt at trying to create a game for the iPad and iPhone.
 
 Currently have background tiles appearing along with a wizard character that
 will walk across screen when a location is tapped. There is also an attack
-button which can be used to fire a magic missile, this currently only works
-when facing to the right. I'm following the Advanture example code provided 
-:by apple as a base for this programe.
+button which can be used to fire a magic missile. I'm following the Advanture
+example code provided by apple as a base for this programe.
 
-Currently crashes if you attempt to attack left, this is probably
-due to it trying to run frames which arn't there.
+The end result should be a universal application which can be used on the
+ipad or on the iphone. It should also support external monitors, were the iphone
+can be used as a joypad.
 
 Game Writen for iOS7 in objective - C using the new Sprite Kit.
