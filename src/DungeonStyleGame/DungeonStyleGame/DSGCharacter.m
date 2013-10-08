@@ -8,6 +8,8 @@
 
 #import "DSGCharacter.h"
 
+
+
 @interface DSGCharacter()
 @property (nonatomic)double movementSpeed;
 @end
@@ -19,7 +21,7 @@
 	if(self){
 		self.position = position;
 		_movementSpeed = defaultSpeed;
-		
+		[self configurePhysics];
 	}
 	return self;
 }
@@ -63,8 +65,10 @@
 			[self fireAnimation:[self walkingLeftFrames] forKey:@"walk_left" forState:(DSGAnimationState)DSGAnimationStateWalking];
 			break;
 		case DSGCharacterFacingUp:
-			
 			[self fireAnimation:[self walkingUpFrames] forKey:@"walking_up" forState:(DSGAnimationState)DSGAnimationStateWalking];
+			break;
+		case DSGCharacterFacingDown:
+			[self fireAnimation:[self walkingDownFrames] forKey:@"walk_down" forState:(DSGAnimationState)DSGAnimationStateWalking];
 			break;
 		default:
 			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right" forState:(DSGAnimationState)DSGAnimationStateWalking];
@@ -115,7 +119,7 @@
 #pragma mark - Location Processing
 -(void)turnToFacePosition:(CGPoint)position{
 	CGFloat rad = [self calculateAngleBetweenPoint:position andPoint:self.position];
-	double degrees = rad * 180 /M_PI;
+	double degrees = RADIANS_TO_DEGREES(rad);
 	
 	if (degrees <= 45 && degrees > -45) {
 		NSLog(@"Facing Up");
@@ -150,14 +154,16 @@
 	CGFloat newX = currentLocation.x + sinf(ang)*deltaT;
 	CGFloat newY = currentLocation.y + cosf(ang)*deltaT;
 	
-	NSLog(@"newX %f, newY %f", newX, newY);
+		//NSLog(@"newX %f, newY %f", newX, newY);
 	double distanceRemaining = hypotf(deltaX, deltaY);
+		//NSLog(@"Distance Remaining %f, DeltaT %f", distanceRemaining, deltaT);
 	if(distanceRemaining < deltaT){
 		self.position = self.targetLocation;
 	}else{
 		self.position = CGPointMake(newX, newY);
 		
 	}
+	
 	self.requestedAnimation = DSGAnimationStateWalking;
 }
 
@@ -199,6 +205,10 @@
 -(DSGCharacterFacingDirection)isFacing{
 
 	return _facing;
+}
+
+-(void)configurePhysics{
+		//overridden
 }
 
 +(void)loadAssets{

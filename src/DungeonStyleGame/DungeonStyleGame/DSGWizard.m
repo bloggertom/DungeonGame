@@ -13,6 +13,7 @@
 #define kNWalkingRightFrames 8
 #define kNWalkingLeftFrames 8
 #define kNWalkingUpFrames 8
+#define kNWalkingDownFrames 8
 #define kNFiringRightFrames 8
 #define kNFiringLeftFrames 8
 
@@ -20,18 +21,36 @@
 #define kMagicMissileDistance 1000
 @implementation DSGWizard
 
--(id)initatPosition:(CGPoint)position{
+-(id)initAtPosition:(CGPoint)position{
 	SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Wizard_Idle"];
 	SKTexture *texture = [atlas textureNamed:@"Idle_right"];
 	
-	NSString *emitterpath = [[NSBundle mainBundle]pathForResource:@"MagicMissileEmitter" ofType:@"sks"];
-	_magicEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterpath];
+	self = [super initWithTexture:texture atPosition:position];
 	
-	return [super initWithTexture:texture atPosition:position];
+	if (self) {
+			//self.collisionBox = self.frame;//CGRectMake(0,0, texture.size.width, texture.size.height);
+		
+		NSString *emitterpath = [[NSBundle mainBundle]pathForResource:@"MagicMissileEmitter" ofType:@"sks"];
+		_magicEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterpath];
+		
+		
+	}
+	
+	return self;
+}
+
+-(void)configurePhysics{
+	self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
+	self.physicsBody.categoryBitMask = DSGCollitionCategoryHero;
+	self.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy;
+	self.physicsBody.collisionBitMask = 0;
+	self.physicsBody.allowsRotation = NO;
+		//self.physicsBody.dynamic = NO;
+
+		
 }
 
 -(void)fireAttackingAnimation{
-	
 	switch (self.isFacing) {
 		case DSGCharacterFacingRight:
 			[self fireMagicMissileWithAnimationFrames:[self firingRightFrames]];
@@ -43,8 +62,6 @@
 			break;
 	}
 	
-	
-		
 }
 
 -(void)animationDidFinish:(DSGAnimationState)animationState{
@@ -61,6 +78,7 @@
 	}
 }
 -(void)fireMagicMissileWithAnimationFrames:(NSArray*)frames{
+	self.physicsBody.usesPreciseCollisionDetection = YES;
 	SKAction *action = [self actionForKey:@"firing"];
 	if (action) {
 		return;
@@ -79,7 +97,7 @@
 	
 	SKAction *group = [SKAction group:@[animation, fireSequence]];
 	[self runAction:group withKey:@"missile"];
-		
+	self.physicsBody.usesPreciseCollisionDetection = NO;
 }
 -(void)fireMagicMissile{
 	
@@ -87,6 +105,10 @@
 	
 	SKSpriteNode *magicMissile = [SKSpriteNode spriteNodeWithTexture:[[self magicMissileRightFrames]firstObject]];
 	
+	magicMissile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:magicMissile.frame.size];
+	magicMissile.physicsBody.categoryBitMask = DSGCollitionCategoryProjectile;
+	magicMissile.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy;
+	magicMissile.physicsBody.collisionBitMask = 0;
 	
 	SKEmitterNode *emitter = [[self magicEmitter]copy];
 	emitter.targetNode = [self.scene childNodeWithName:@"world"];
@@ -105,10 +127,12 @@
 		case DSGCharacterFacingRight:
 			x = kMagicMissileDistance;
 			p.x += 20;
+			
 			break;
 		case DSGCharacterFacingLeft:
 			x = -kMagicMissileDistance;
 			p.x -=20;
+			magicMissile.zRotation = DEGREES_TO_RADIANS(180);
 			break;
 		case DSGCharacterFacingDown:
 			y = -kMagicMissileDistance;
@@ -131,9 +155,11 @@
 	SKAction *movement = [SKAction moveByX:x y:y duration:1];
 	SKAction *removal = [SKAction removeFromParent];
 	[magicMissile runAction:[SKAction sequence:@[movement, removal]]];
+	
 }
 
 +(void)loadAssets{
+	[super loadAssets];
 	
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
@@ -173,6 +199,14 @@
 		for (int i=1; i<kNWalkingUpFrames; i++) {
 			SKTexture *frame = [wUp textureNamed:[NSString stringWithFormat:@"Walking_up_%d",i]];
 			[sWalkingUpFrames addObject:frame];
+		}
+		
+			//walking down frames
+		sWalkingDownFrames = [[NSMutableArray alloc]initWithCapacity:kNWalkingDownFrames];
+		SKTextureAtlas *wDown = [SKTextureAtlas atlasNamed:@"Wizard_Walking_Down"];
+		for (int i=1; i<kNWalkingDownFrames; i++) {
+			SKTexture *frame = [wDown textureNamed:[NSString stringWithFormat:@"Walking_down_%d",i]];
+			[sWalkingDownFrames addObject:frame];
 		}
 		
 			//firing right frames

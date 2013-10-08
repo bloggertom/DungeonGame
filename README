@@ -2,8 +2,9 @@ This is a firt attempt at trying to create a game for the iPad and iPhone.
 
 Currently have background tiles appearing along with a wizard character that
 will walk across screen when a location is tapped. There is also an attack
-button which can be used to fire a magic missile. I'm following the Advanture
-example code provided by apple as a base for this programe.
+button which can be used to fire a magic missile at the grub that appears on
+screen. I'm following the Advanture example code provided by apple as a base
+for this program.
 
 The end result should be a universal application which can be used on the
 ipad or on the iphone. It should also support external monitors, were the iphone

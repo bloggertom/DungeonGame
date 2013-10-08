@@ -9,6 +9,14 @@
 #import <SpriteKit/SpriteKit.h>
 #define defaultSpeed 200
 #define animationSpeed 10
+#define DEGREES_TO_RADIANS(degrees) degrees * M_PI / 180
+#define RADIANS_TO_DEGREES(radians) radians * 180 / M_PI
+
+typedef enum : uint32_t {
+	DSGCollitionCategoryProjectile = 0x1 << 0,
+	DSGCollitionCategoryEnemy = 0x1 << 1,
+	DSGCollitionCategoryHero = 0x1 << 2
+}DSGCollitionCategory;
 
 typedef enum : uint8_t{
 	DSGCharacterFacingUp = 0,
@@ -36,6 +44,7 @@ typedef enum : uint8_t{
 @property (nonatomic, setter = requestMovement:)BOOL movementRequested;
 @property (nonatomic, setter = requestAttack:)BOOL attackRequested;
 @property (nonatomic)BOOL isAnimated;
+	//@property (nonatomic)CGRect collisionBox;
 
 
 -(id)initWithTexture:(SKTexture *)texture atPosition:(CGPoint)position;
@@ -46,6 +55,8 @@ typedef enum : uint8_t{
 -(void)fireAttackingAnimation;
 -(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state;
 -(void)animationDidFinish:(DSGAnimationState)animationState;
+
+-(void)configurePhysics;
 
 +(void)loadAssets;
 

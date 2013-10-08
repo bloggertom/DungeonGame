@@ -9,11 +9,13 @@
 #import <SpriteKit/SpriteKit.h>
 
 #define kSpriteSize 32
+#define DEBUG_COLLISIONS 1
 typedef void (^DSGLoadAssesCompleteHandler)(void);
 
 typedef enum : uint8_t {
 	DSGWorldLayerGround = 0,
 	DSGCharacterLayer,
+	DSGDebugLayer,
 	kWorldLayerCount
 } DSGWorldLayer;
 
@@ -29,8 +31,8 @@ typedef enum : uint8_t {
 
 
 -(void)addChildNode:(SKNode*)node atWorldLayer:(DSGWorldLayer)layer;
-
 -(void)requestAttack;
+
 +(void)loadAssetsWithHandler:(DSGLoadAssesCompleteHandler)callback;
 
 +(void)loadAssets;

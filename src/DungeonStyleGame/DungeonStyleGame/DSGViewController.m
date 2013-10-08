@@ -26,8 +26,11 @@
 	[DSGTestLevel loadAssetsWithHandler:^{
 			// Create and configure the scene.
 		CGSize size = skView.bounds.size;
-		size.height *= 0.75;
-		size.width *=0.75;
+		
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			size.height *= 0.75;
+			size.width *=0.75;
+		}
 		SKScene * scene = [DSGTestLevel sceneWithSize:size];
 		scene.scaleMode = SKSceneScaleModeAspectFill;
 		[skView presentScene:scene];

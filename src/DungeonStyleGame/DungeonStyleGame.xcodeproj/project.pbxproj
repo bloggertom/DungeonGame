@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1931E718035E8D000023CD /* Wizard_Walking_Down.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1931E618035E8D000023CD /* Wizard_Walking_Down.atlas */; };
+		DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931E9180379F5000023CD /* DSGPhysicsDelegate.m */; };
+		DB1931ED18037DB2000023CD /* DSGGrub.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931EC18037DB2000023CD /* DSGGrub.m */; };
+		DB1931F018038181000023CD /* Grub_Idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1931EF18038181000023CD /* Grub_Idle.atlas */; };
+		DB1931F21803818D000023CD /* Grub_Moving_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1931F11803818D000023CD /* Grub_Moving_Right.atlas */; };
 		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
 		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
 		DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
@@ -41,6 +46,7 @@
 		DBA429DA17F62683009CCC30 /* Wizard_Walking_Up.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */; };
 		DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */; };
 		DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */; };
+		DBF9848E17FE2FC000A75DF1 /* DSGEnemy.m in Sources */ = {isa = PBXBuildFile; fileRef = DBF9848D17FE2FC000A75DF1 /* DSGEnemy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +60,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB1931E618035E8D000023CD /* Wizard_Walking_Down.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Down.atlas; sourceTree = "<group>"; };
+		DB1931E8180379F5000023CD /* DSGPhysicsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGPhysicsDelegate.h; sourceTree = "<group>"; };
+		DB1931E9180379F5000023CD /* DSGPhysicsDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGPhysicsDelegate.m; sourceTree = "<group>"; };
+		DB1931EB18037DB2000023CD /* DSGGrub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGGrub.h; sourceTree = "<group>"; };
+		DB1931EC18037DB2000023CD /* DSGGrub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGGrub.m; sourceTree = "<group>"; };
+		DB1931EF18038181000023CD /* Grub_Idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grub_Idle.atlas; sourceTree = "<group>"; };
+		DB1931F11803818D000023CD /* Grub_Moving_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grub_Moving_Right.atlas; sourceTree = "<group>"; };
 		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +110,8 @@
 		DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Up.atlas; sourceTree = "<group>"; };
 		DBA741FC17EB6F02009FFB64 /* Wizard_Walking_Left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Left.atlas; sourceTree = "<group>"; };
 		DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Magic_Missile_Right.atlas; sourceTree = "<group>"; };
+		DBF9848C17FE2FC000A75DF1 /* DSGEnemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGEnemy.h; sourceTree = "<group>"; };
+		DBF9848D17FE2FC000A75DF1 /* DSGEnemy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGEnemy.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +139,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB1931EE180380C4000023CD /* Grub */ = {
+			isa = PBXGroup;
+			children = (
+				DB1931F11803818D000023CD /* Grub_Moving_Right.atlas */,
+				DB1931EF18038181000023CD /* Grub_Idle.atlas */,
+			);
+			name = Grub;
+			sourceTree = "<group>";
+		};
 		DB20812E17E8C58A00AAEF7F = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +194,8 @@
 				DB20815717E8C58A00AAEF7F /* Spaceship.png */,
 				DB20815917E8C58A00AAEF7F /* Images.xcassets */,
 				DB20814317E8C58A00AAEF7F /* Supporting Files */,
+				DB1931E8180379F5000023CD /* DSGPhysicsDelegate.h */,
+				DB1931E9180379F5000023CD /* DSGPhysicsDelegate.m */,
 			);
 			path = DungeonStyleGame;
 			sourceTree = "<group>";
@@ -217,6 +243,7 @@
 		DB20817A17E8D25300AAEF7F /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				DB1931EE180380C4000023CD /* Grub */,
 				DB42CAF117F4E9F300BE10EA /* Emitters */,
 				DB20818A17E90D5700AAEF7F /* Wizard */,
 				DB20817B17E8D52200AAEF7F /* Map */,
@@ -241,6 +268,10 @@
 				DB20818317E908D500AAEF7F /* DSGHero.m */,
 				DB20818517E90A3E00AAEF7F /* DSGWizard.h */,
 				DB20818617E90A3E00AAEF7F /* DSGWizard.m */,
+				DBF9848C17FE2FC000A75DF1 /* DSGEnemy.h */,
+				DBF9848D17FE2FC000A75DF1 /* DSGEnemy.m */,
+				DB1931EB18037DB2000023CD /* DSGGrub.h */,
+				DB1931EC18037DB2000023CD /* DSGGrub.m */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -248,6 +279,7 @@
 		DB20818A17E90D5700AAEF7F /* Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				DB1931E618035E8D000023CD /* Wizard_Walking_Down.atlas */,
 				DB933BAB17FCD87D0056623B /* Wizard_Firing_Left.atlas */,
 				DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */,
 				DBBACEB617F32B1D004B84F7 /* Magic_Missile_Right.atlas */,
@@ -374,11 +406,14 @@
 				DB20815A17E8C58A00AAEF7F /* Images.xcassets in Resources */,
 				DBBACEB717F32B1D004B84F7 /* Magic_Missile_Right.atlas in Resources */,
 				DB42CAF417F4EA4C00BE10EA /* MagicMissileEmitter.sks in Resources */,
+				DB1931E718035E8D000023CD /* Wizard_Walking_Down.atlas in Resources */,
 				DBA741FD17EB6F02009FFB64 /* Wizard_Walking_Left.atlas in Resources */,
+				DB1931F018038181000023CD /* Grub_Idle.atlas in Resources */,
 				DB20817D17E8D5BD00AAEF7F /* Map.atlas in Resources */,
 				DB933BAE17FD85C50056623B /* iPhone.storyboard in Resources */,
 				DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */,
 				DB20815817E8C58A00AAEF7F /* Spaceship.png in Resources */,
+				DB1931F21803818D000023CD /* Grub_Moving_Right.atlas in Resources */,
 				DB20818917E90D5300AAEF7F /* Wizard_Idle.atlas in Resources */,
 				DB20815017E8C58A00AAEF7F /* Main.storyboard in Resources */,
 			);
@@ -403,10 +438,13 @@
 				DB20815317E8C58A00AAEF7F /* DSGViewController.m in Sources */,
 				DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */,
 				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
+				DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */,
 				DB20814917E8C58A00AAEF7F /* main.m in Sources */,
 				DB20818417E908D500AAEF7F /* DSGHero.m in Sources */,
+				DBF9848E17FE2FC000A75DF1 /* DSGEnemy.m in Sources */,
 				DB20818717E90A3E00AAEF7F /* DSGWizard.m in Sources */,
 				DB20814D17E8C58A00AAEF7F /* DSGAppDelegate.m in Sources */,
+				DB1931ED18037DB2000023CD /* DSGGrub.m in Sources */,
 				DB20817817E8D09200AAEF7F /* DSGTestLevel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,7 +580,7 @@
 				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -558,7 +596,7 @@
 				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -12,7 +12,7 @@
 
 @property (nonatomic)SKEmitterNode *magicEmitter;
 
--(id)initatPosition:(CGPoint)position;
+-(id)initAtPosition:(CGPoint)position;
 
 +(void)loadAssets;
 @end

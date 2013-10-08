@@ -12,6 +12,7 @@
 @property (nonatomic) NSMutableArray *layers;
 @property (nonatomic)SKNode *world;
 @property (nonatomic)NSTimeInterval lastTimeUpdate;
+@property (nonatomic)SKNode *dbugOverlay;
 @end
 
 @implementation DSGLevel
@@ -24,7 +25,6 @@
 		[_world setName:@"world"];
 		
 		_layers = [[NSMutableArray alloc]init];
-		
 		for(int i=0; i< kWorldLayerCount; i++){
 			SKNode *layer = [[SKNode alloc]init];
 			layer.zPosition = i - kWorldLayerCount;
@@ -32,8 +32,13 @@
 			[_world addChild:layer];
 			[_layers addObject:layer];
 		}
+		_monsters = [[NSMutableArray alloc]init];
+
 		[self addChild:_world];
-        
+#if DEBUG_COLLISIONS
+		_dbugOverlay = [SKNode node];
+		[self addChildNode:_dbugOverlay atWorldLayer:DSGDebugLayer];
+#endif
     }
     return self;
 }
@@ -41,16 +46,18 @@
 
 #pragma mark - Animation Cycle
 -(void)update:(NSTimeInterval)currentTime{
-	
+#if DEBUG_COLLISIONS
+	[self.dbugOverlay removeFromParent];
+	[self.dbugOverlay removeAllChildren];
+#endif
 	NSTimeInterval timeSinceLast = currentTime - self.lastTimeUpdate;
 	self.lastTimeUpdate = currentTime;
 	
 	[self updateForTimeIntervale:timeSinceLast];
 	
 	if(self.hero.movementRequested){
-		if (!CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
-			[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];
-		}else {
+		[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];//Moved to here as physics simulartion moves hero slightly FOR NO REASON!.
+		if (CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
 			self.hero.movementRequested = NO;
 			self.hero.requestedAnimation = DSGAnimationStateIdle;
 		}
@@ -67,6 +74,32 @@
 
 -(void)updateForTimeIntervale:(NSTimeInterval)time{
 		//overridden
+	
+
+}
+
+-(void)didEvaluateActions{
+		//NSLog(@"after actions \ntarget x=%f y=%f, position x=%f y=%f", self.hero.targetLocation.x,self.hero.targetLocation.y, self.hero.position.x, self.hero.position.y);
+}
+-(void)didSimulatePhysics{
+	//NSLog(@"after physics \ntarget x=%f y=%f, position x=%f y=%f", self.hero.targetLocation.x,self.hero.targetLocation.y, self.hero.position.x, self.hero.position.y);
+#if DEBUG_COLLISIONS
+	
+	SKShapeNode *heroBox = [[SKShapeNode alloc]init];
+	heroBox.path = CGPathCreateWithRect(_hero.frame, NULL);
+	[_dbugOverlay addChild:heroBox];
+	
+	
+	for (SKNode *node in _monsters) {
+		SKShapeNode *monsterBox = [[SKShapeNode alloc]init];
+		monsterBox.path = CGPathCreateWithRect(node.frame, NULL);
+		[_dbugOverlay addChild:monsterBox];
+	}
+	
+	
+	
+	[self addChildNode:_dbugOverlay atWorldLayer:DSGDebugLayer];
+#endif
 }
 #pragma mark - Controls
 #pragma mark - Touches
@@ -138,4 +171,7 @@
 		//overridden
 }
 
+-(UIImage*)levelDataMap{
+	return nil;//overriddin
+}
 @end

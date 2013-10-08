@@ -8,9 +8,10 @@
 
 #import "DSGTestLevel.h"
 #import "DSGWizard.h"
-
+#import "DSGPhysicsDelegate.h"
+#import "DSGGrub.h"
 @interface DSGTestLevel()
-
+@property (nonatomic, strong)DSGPhysicsDelegate *physicsDelegate;
 
 @end
 
@@ -21,15 +22,28 @@
 	
 	if(self){
 		
+		_physicsDelegate = [[DSGPhysicsDelegate alloc]init];
+		if(_physicsDelegate){
+			NSLog(@"physics delegate");
+		}
+		
+		self.physicsWorld.contactDelegate = _physicsDelegate;
+		self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
 		[self addBackground];
 	}
 	return self;
 }
-
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+	NSLog(@"contact");
+}
 -(void)startLevel{
-	DSGWizard *hero = [[DSGWizard alloc]initatPosition:CGPointMake(200,200)];
+	DSGWizard *hero = [[DSGWizard alloc]initAtPosition:CGPointMake(200,200)];
+	NSLog(@"Width %f, Height %f", hero.size.width, hero.size.height);
+	DSGGrub *grub = [[DSGGrub alloc]initAtPosition:CGPointMake(300, 300)];
+	[self.monsters addObject:grub];
 	self.hero = hero;
 	[self addChildNode:hero atWorldLayer:DSGCharacterLayer];
+	[self addChildNode:grub atWorldLayer:DSGCharacterLayer];
 	self.hero.isAnimated = YES;
 }
 
@@ -79,10 +93,11 @@
 
 + (void)releaseLevelAssets{
 	sBackgroundTiles = nil;
+	sLevelDataImage = nil;
 	
 }
 #pragma mark - Assets Declaration
 static NSMutableArray *sBackgroundTiles;
-
+static UIImage *sLevelDataImage;
 
 @end
