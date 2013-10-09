@@ -63,11 +63,20 @@
 		}
 		
 	}
+	
+	CGPoint direction = self.hero.targetDirection;
+	if(!CGPointEqualToPoint(direction, CGPointZero)){
+		NSLog(@"MOVE");
+		[self.hero moveInDirection:direction withTimeInterval:timeSinceLast];
+		self.hero.requestedAnimation = DSGAnimationStateWalking;
+	}else{
+			//NSLog(@"STOP");
+		self.hero.requestedAnimation = DSGAnimationStateIdle;
+	}
+	
 	if (self.hero.attackRequested) {
 		self.hero.attackRequested = NO;
 		self.hero.requestedAnimation = DSGAnimationStateAttacking;
-		
-		
 	}
 }
 

@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 #define kSpriteSize 32
-#define DEBUG_COLLISIONS 1
+#define DEBUG_COLLISIONS 0
 typedef void (^DSGLoadAssesCompleteHandler)(void);
 
 typedef enum : uint8_t {

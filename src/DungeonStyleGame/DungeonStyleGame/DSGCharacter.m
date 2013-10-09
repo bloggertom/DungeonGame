@@ -119,7 +119,10 @@
 #pragma mark - Location Processing
 -(void)turnToFacePosition:(CGPoint)position{
 	CGFloat rad = [self calculateAngleBetweenPoint:position andPoint:self.position];
-	double degrees = RADIANS_TO_DEGREES(rad);
+	[self turnToFaceRadion:rad];
+}
+-(void)turnToFaceRadion:(CGFloat)radions{
+	double degrees = RADIANS_TO_DEGREES(radions);
 	
 	if (degrees <= 45 && degrees > -45) {
 		NSLog(@"Facing Up");
@@ -134,7 +137,6 @@
 	}
 	NSLog(@"Facing %d, degrees %f", _facing, degrees);
 }
-
 -(CGFloat)calculateAngleBetweenPoint:(CGPoint)first andPoint:(CGPoint)second{
 	CGFloat deltaX = first.x - second.x;
 	CGFloat deltaY = first.y - second.y;
@@ -177,14 +179,14 @@
 	
 	CGPoint targetPosition = CGPointMake(currentLocation.x - deltaX, currentLocation.y - deltaY);
 	CGFloat ang = atan2f(deltaX, deltaY);
-	
 	CGFloat distanceRemaining = hypotf(deltaX, deltaY);
-	
+	[self turnToFaceRadion:ang];
 	if (distanceRemaining < deltaT) {
 		self.position = targetPosition;
 	}else{
 		self.position = CGPointMake(currentLocation.x + sinf(ang)*deltaT, currentLocation.y + cosf(ang)*deltaT);
 	}
+	self.requestedAnimation = DSGAnimationStateWalking;
 }
 
 -(void)setTargetLocation:(CGPoint)targetLocation{

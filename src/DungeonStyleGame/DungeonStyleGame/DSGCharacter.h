@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+
+#import "DSGControllable.h"
 #define defaultSpeed 200
 #define animationSpeed 10
 #define DEGREES_TO_RADIANS(degrees) degrees * M_PI / 180
@@ -32,7 +34,7 @@ typedef enum : uint8_t{
 	DSGAnimationStateDieing
 }DSGAnimationState;
 
-@interface DSGCharacter : SKSpriteNode
+@interface DSGCharacter : SKSpriteNode <DSGControllable>
 
 @property (nonatomic)NSString *name;
 @property (nonatomic)NSInteger health;
@@ -41,6 +43,7 @@ typedef enum : uint8_t{
 @property (nonatomic, getter = isFacing)DSGCharacterFacingDirection facing;
 @property (nonatomic)DSGAnimationState requestedAnimation;
 @property (nonatomic)CGPoint targetLocation;
+@property (nonatomic)CGPoint targetDirection;
 @property (nonatomic, setter = requestMovement:)BOOL movementRequested;
 @property (nonatomic, setter = requestAttack:)BOOL attackRequested;
 @property (nonatomic)BOOL isAnimated;
@@ -50,6 +53,7 @@ typedef enum : uint8_t{
 -(id)initWithTexture:(SKTexture *)texture atPosition:(CGPoint)position;
 -(void)turnToFacePosition:(CGPoint)position;
 -(void)moveTowardsTargetLocationForTimeIntervale:(NSTimeInterval)timeInterval;
+-(void)moveInDirection:(CGPoint)direction withTimeInterval:(NSTimeInterval)timeInterval;
 -(void)updateForTimeIntervale:(NSTimeInterval)time;
 
 -(void)fireAttackingAnimation;

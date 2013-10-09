@@ -12,6 +12,10 @@
 		DB1931ED18037DB2000023CD /* DSGGrub.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931EC18037DB2000023CD /* DSGGrub.m */; };
 		DB1931F018038181000023CD /* Grub_Idle.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1931EF18038181000023CD /* Grub_Idle.atlas */; };
 		DB1931F21803818D000023CD /* Grub_Moving_Right.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1931F11803818D000023CD /* Grub_Moving_Right.atlas */; };
+		DB1931F51804416E000023CD /* DSGiPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931F41804416E000023CD /* DSGiPhoneMainViewController.m */; };
+		DB1931FB180454C0000023CD /* DSGGamePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931FA180454C0000023CD /* DSGGamePadViewController.m */; };
+		DB1931FE18045A2F000023CD /* DSGiPhoneExternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931FD18045A2F000023CD /* DSGiPhoneExternalViewController.m */; };
+		DB19320218049872000023CD /* DSGJoyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB19320118049872000023CD /* DSGJoyPadView.m */; };
 		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
 		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
 		DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
@@ -67,6 +71,16 @@
 		DB1931EC18037DB2000023CD /* DSGGrub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGGrub.m; sourceTree = "<group>"; };
 		DB1931EF18038181000023CD /* Grub_Idle.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grub_Idle.atlas; sourceTree = "<group>"; };
 		DB1931F11803818D000023CD /* Grub_Moving_Right.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Grub_Moving_Right.atlas; sourceTree = "<group>"; };
+		DB1931F31804416E000023CD /* DSGiPhoneMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGiPhoneMainViewController.h; sourceTree = "<group>"; };
+		DB1931F41804416E000023CD /* DSGiPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGiPhoneMainViewController.m; sourceTree = "<group>"; };
+		DB1931F9180454C0000023CD /* DSGGamePadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGGamePadViewController.h; sourceTree = "<group>"; };
+		DB1931FA180454C0000023CD /* DSGGamePadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGGamePadViewController.m; sourceTree = "<group>"; };
+		DB1931FC18045A2F000023CD /* DSGiPhoneExternalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGiPhoneExternalViewController.h; sourceTree = "<group>"; };
+		DB1931FD18045A2F000023CD /* DSGiPhoneExternalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGiPhoneExternalViewController.m; sourceTree = "<group>"; };
+		DB1931FF18045B0B000023CD /* DSGControllable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGControllable.h; sourceTree = "<group>"; };
+		DB19320018049872000023CD /* DSGJoyPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGJoyPadView.h; sourceTree = "<group>"; };
+		DB19320118049872000023CD /* DSGJoyPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGJoyPadView.m; sourceTree = "<group>"; };
+		DB1932041804A72B000023CD /* DSGJoyPadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGJoyPadDelegate.h; sourceTree = "<group>"; };
 		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -207,6 +221,8 @@
 				DB20814517E8C58A00AAEF7F /* InfoPlist.strings */,
 				DB20814817E8C58A00AAEF7F /* main.m */,
 				DB20814A17E8C58A00AAEF7F /* DungeonStyleGame-Prefix.pch */,
+				DB1931FF18045B0B000023CD /* DSGControllable.h */,
+				DB1932041804A72B000023CD /* DSGJoyPadDelegate.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -313,6 +329,14 @@
 		DB933BB017FD88DC0056623B /* IPhone */ = {
 			isa = PBXGroup;
 			children = (
+				DB1931F31804416E000023CD /* DSGiPhoneMainViewController.h */,
+				DB1931F41804416E000023CD /* DSGiPhoneMainViewController.m */,
+				DB1931F9180454C0000023CD /* DSGGamePadViewController.h */,
+				DB1931FA180454C0000023CD /* DSGGamePadViewController.m */,
+				DB1931FC18045A2F000023CD /* DSGiPhoneExternalViewController.h */,
+				DB1931FD18045A2F000023CD /* DSGiPhoneExternalViewController.m */,
+				DB19320018049872000023CD /* DSGJoyPadView.h */,
+				DB19320118049872000023CD /* DSGJoyPadView.m */,
 			);
 			name = IPhone;
 			sourceTree = "<group>";
@@ -436,6 +460,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB20815317E8C58A00AAEF7F /* DSGViewController.m in Sources */,
+				DB1931FE18045A2F000023CD /* DSGiPhoneExternalViewController.m in Sources */,
+				DB1931F51804416E000023CD /* DSGiPhoneMainViewController.m in Sources */,
 				DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */,
 				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
 				DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */,
@@ -446,6 +472,8 @@
 				DB20814D17E8C58A00AAEF7F /* DSGAppDelegate.m in Sources */,
 				DB1931ED18037DB2000023CD /* DSGGrub.m in Sources */,
 				DB20817817E8D09200AAEF7F /* DSGTestLevel.m in Sources */,
+				DB1931FB180454C0000023CD /* DSGGamePadViewController.m in Sources */,
+				DB19320218049872000023CD /* DSGJoyPadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,7 +608,7 @@
 				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -596,7 +624,7 @@
 				INFOPLIST_FILE = "DungeonStyleGame/DungeonStyleGame-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

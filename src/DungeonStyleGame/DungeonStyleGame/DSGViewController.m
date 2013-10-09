@@ -37,9 +37,6 @@
 	}];
 	
     
-    
-    // Present the scene.
-    
 }
 
 - (BOOL)shouldAutorotate
