@@ -8,6 +8,7 @@
 
 #import "DSGLevel.h"
 #import "DSGHero.h"
+#import "GameCon"
 @interface DSGLevel()
 @property (nonatomic) NSMutableArray *layers;
 @property (nonatomic)SKNode *world;
@@ -50,34 +51,38 @@
 	[self.dbugOverlay removeFromParent];
 	[self.dbugOverlay removeAllChildren];
 #endif
+	
+
 	NSTimeInterval timeSinceLast = currentTime - self.lastTimeUpdate;
 	self.lastTimeUpdate = currentTime;
-	
 	[self updateForTimeIntervale:timeSinceLast];
-	
-	if(self.hero.movementRequested){
-		[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];//Moved to here as physics simulartion moves hero slightly FOR NO REASON!.
-		if (CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
-			self.hero.movementRequested = NO;
-			self.hero.requestedAnimation = DSGAnimationStateIdle;
-		}
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+		if(self.hero.movementRequested){
+			[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];//Moved to here as	physics simulartion moves hero slightly FOR NO REASON!.
+			if (CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
+				self.hero.movementRequested = NO;
+				self.hero.requestedAnimation = DSGAnimationStateIdle;
+			}
 		
-	}
-	
-	CGPoint direction = self.hero.targetDirection;
-	if(!CGPointEqualToPoint(direction, CGPointZero)){
-		NSLog(@"MOVE");
-		[self.hero moveInDirection:direction withTimeInterval:timeSinceLast];
-		self.hero.requestedAnimation = DSGAnimationStateWalking;
+		}
 	}else{
-			//NSLog(@"STOP");
-		self.hero.requestedAnimation = DSGAnimationStateIdle;
+		if (self.hero.movementRequested) {
+			CGPoint direction = self.hero.targetDirection;
+			if(!CGPointEqualToPoint(direction, CGPointZero)){
+				NSLog(@"MOVE");
+				[self.hero moveInDirection:direction withTimeInterval:timeSinceLast];
+				self.hero.requestedAnimation = DSGAnimationStateWalking;
+			}else if(!self.hero.attackRequested){
+				self.hero.movementRequested = NO;
+				self.hero.requestedAnimation = DSGAnimationStateIdle;
+			}
+		}
 	}
-	
 	if (self.hero.attackRequested) {
 		self.hero.attackRequested = NO;
 		self.hero.requestedAnimation = DSGAnimationStateAttacking;
 	}
+
 }
 
 

@@ -51,6 +51,7 @@
 -(void)joypadMovedInDirection:(CGPoint)direction{
 	NSLog(@"Joy Pad Moved");
 	_scene.hero.targetDirection = direction;
+	_scene.hero.movementRequested = YES;
 	
 }
 

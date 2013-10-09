@@ -6,7 +6,6 @@ button which can be used to fire a magic missile at the grub on screen.
 
 It is now possible to run the game on a iphone with an external monitor. A
 very simple joy pad appears on the screen of the iphone which allows you
-to move the wizard around the screen. There are some optimization issuse
-at the moment, mostly focused around the firing animation.
+to move the wizard around the screen.
 
 Game Writen for iOS7 in objective - C using the new Sprite Kit.
