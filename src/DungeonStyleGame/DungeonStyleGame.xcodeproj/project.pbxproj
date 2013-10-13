@@ -16,6 +16,13 @@
 		DB1931FB180454C0000023CD /* DSGGamePadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931FA180454C0000023CD /* DSGGamePadViewController.m */; };
 		DB1931FE18045A2F000023CD /* DSGiPhoneExternalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1931FD18045A2F000023CD /* DSGiPhoneExternalViewController.m */; };
 		DB19320218049872000023CD /* DSGJoyPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB19320118049872000023CD /* DSGJoyPadView.m */; };
+		DB1932081805C4C5000023CD /* UIImage+Pixel.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932071805C4C5000023CD /* UIImage+Pixel.m */; };
+		DB19320C1805F063000023CD /* DSGMapBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = DB19320B1805F063000023CD /* DSGMapBuilder.m */; };
+		DB19320F1805F079000023CD /* DSGTile.m in Sources */ = {isa = PBXBuildFile; fileRef = DB19320E1805F079000023CD /* DSGTile.m */; };
+		DB1932151805F26D000023CD /* DSGMazeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932141805F26C000023CD /* DSGMazeGenerator.m */; };
+		DB1932181805F48E000023CD /* DSGMaze.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932171805F48E000023CD /* DSGMaze.m */; };
+		DB1932CC180A20AF000023CD /* DSGWall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CB180A20AF000023CD /* DSGWall.m */; };
+		DB1932D0180A211D000023CD /* DSGSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CF180A211D000023CD /* DSGSprite.m */; };
 		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
 		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
 		DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
@@ -81,6 +88,20 @@
 		DB19320018049872000023CD /* DSGJoyPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGJoyPadView.h; sourceTree = "<group>"; };
 		DB19320118049872000023CD /* DSGJoyPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGJoyPadView.m; sourceTree = "<group>"; };
 		DB1932041804A72B000023CD /* DSGJoyPadDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSGJoyPadDelegate.h; sourceTree = "<group>"; };
+		DB1932061805C4C5000023CD /* UIImage+Pixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Pixel.h"; sourceTree = "<group>"; };
+		DB1932071805C4C5000023CD /* UIImage+Pixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Pixel.m"; sourceTree = "<group>"; };
+		DB19320A1805F063000023CD /* DSGMapBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGMapBuilder.h; sourceTree = "<group>"; };
+		DB19320B1805F063000023CD /* DSGMapBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGMapBuilder.m; sourceTree = "<group>"; };
+		DB19320D1805F079000023CD /* DSGTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGTile.h; sourceTree = "<group>"; };
+		DB19320E1805F079000023CD /* DSGTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGTile.m; sourceTree = "<group>"; };
+		DB1932131805F26C000023CD /* DSGMazeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGMazeGenerator.h; sourceTree = "<group>"; };
+		DB1932141805F26C000023CD /* DSGMazeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGMazeGenerator.m; sourceTree = "<group>"; };
+		DB1932161805F48E000023CD /* DSGMaze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGMaze.h; sourceTree = "<group>"; };
+		DB1932171805F48E000023CD /* DSGMaze.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGMaze.m; sourceTree = "<group>"; };
+		DB1932CA180A20AF000023CD /* DSGWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGWall.h; sourceTree = "<group>"; };
+		DB1932CB180A20AF000023CD /* DSGWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGWall.m; sourceTree = "<group>"; };
+		DB1932CE180A211D000023CD /* DSGSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSprite.h; sourceTree = "<group>"; };
+		DB1932CF180A211D000023CD /* DSGSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSprite.m; sourceTree = "<group>"; };
 		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -162,6 +183,42 @@
 			name = Grub;
 			sourceTree = "<group>";
 		};
+		DB1932051805C47B000023CD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DB1932061805C4C5000023CD /* UIImage+Pixel.h */,
+				DB1932071805C4C5000023CD /* UIImage+Pixel.m */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		DB1932091805F042000023CD /* Generator */ = {
+			isa = PBXGroup;
+			children = (
+				DB19320A1805F063000023CD /* DSGMapBuilder.h */,
+				DB19320B1805F063000023CD /* DSGMapBuilder.m */,
+				DB19320D1805F079000023CD /* DSGTile.h */,
+				DB19320E1805F079000023CD /* DSGTile.m */,
+				DB1932131805F26C000023CD /* DSGMazeGenerator.h */,
+				DB1932141805F26C000023CD /* DSGMazeGenerator.m */,
+				DB1932161805F48E000023CD /* DSGMaze.h */,
+				DB1932171805F48E000023CD /* DSGMaze.m */,
+			);
+			name = Generator;
+			sourceTree = "<group>";
+		};
+		DB1932CD180A20FD000023CD /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				DB20817E17E904B500AAEF7F /* Characters */,
+				DB1932CA180A20AF000023CD /* DSGWall.h */,
+				DB1932CB180A20AF000023CD /* DSGWall.m */,
+				DB1932CE180A211D000023CD /* DSGSprite.h */,
+				DB1932CF180A211D000023CD /* DSGSprite.m */,
+			);
+			name = Sprites;
+			sourceTree = "<group>";
+		};
 		DB20812E17E8C58A00AAEF7F = {
 			isa = PBXGroup;
 			children = (
@@ -197,19 +254,20 @@
 		DB20814217E8C58A00AAEF7F /* DungeonStyleGame */ = {
 			isa = PBXGroup;
 			children = (
+				DB1932CD180A20FD000023CD /* Sprites */,
+				DB1932051805C47B000023CD /* Utilities */,
 				DB933BB017FD88DC0056623B /* IPhone */,
 				DB933BAF17FD88CF0056623B /* IPad */,
+				DB1931E8180379F5000023CD /* DSGPhysicsDelegate.h */,
+				DB1931E9180379F5000023CD /* DSGPhysicsDelegate.m */,
 				DB20814B17E8C58A00AAEF7F /* DSGAppDelegate.h */,
 				DB20814C17E8C58A00AAEF7F /* DSGAppDelegate.m */,
 				DB20814E17E8C58A00AAEF7F /* Main.storyboard */,
 				DB933BAD17FD85C50056623B /* iPhone.storyboard */,
 				DB20817917E8D23B00AAEF7F /* Levels */,
-				DB20817E17E904B500AAEF7F /* Characters */,
 				DB20815717E8C58A00AAEF7F /* Spaceship.png */,
 				DB20815917E8C58A00AAEF7F /* Images.xcassets */,
 				DB20814317E8C58A00AAEF7F /* Supporting Files */,
-				DB1931E8180379F5000023CD /* DSGPhysicsDelegate.h */,
-				DB1931E9180379F5000023CD /* DSGPhysicsDelegate.m */,
 			);
 			path = DungeonStyleGame;
 			sourceTree = "<group>";
@@ -248,6 +306,7 @@
 		DB20817917E8D23B00AAEF7F /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				DB1932091805F042000023CD /* Generator */,
 				DB20815417E8C58A00AAEF7F /* DSGLevel.h */,
 				DB20815517E8C58A00AAEF7F /* DSGLevel.m */,
 				DB20817617E8D09200AAEF7F /* DSGTestLevel.h */,
@@ -466,11 +525,18 @@
 				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
 				DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */,
 				DB20814917E8C58A00AAEF7F /* main.m in Sources */,
+				DB1932181805F48E000023CD /* DSGMaze.m in Sources */,
 				DB20818417E908D500AAEF7F /* DSGHero.m in Sources */,
+				DB1932081805C4C5000023CD /* UIImage+Pixel.m in Sources */,
 				DBF9848E17FE2FC000A75DF1 /* DSGEnemy.m in Sources */,
 				DB20818717E90A3E00AAEF7F /* DSGWizard.m in Sources */,
+				DB1932CC180A20AF000023CD /* DSGWall.m in Sources */,
+				DB1932D0180A211D000023CD /* DSGSprite.m in Sources */,
+				DB19320C1805F063000023CD /* DSGMapBuilder.m in Sources */,
+				DB19320F1805F079000023CD /* DSGTile.m in Sources */,
 				DB20814D17E8C58A00AAEF7F /* DSGAppDelegate.m in Sources */,
 				DB1931ED18037DB2000023CD /* DSGGrub.m in Sources */,
+				DB1932151805F26D000023CD /* DSGMazeGenerator.m in Sources */,
 				DB20817817E8D09200AAEF7F /* DSGTestLevel.m in Sources */,
 				DB1931FB180454C0000023CD /* DSGGamePadViewController.m in Sources */,
 				DB19320218049872000023CD /* DSGJoyPadView.m in Sources */,

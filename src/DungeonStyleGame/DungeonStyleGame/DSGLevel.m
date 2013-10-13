@@ -6,9 +6,10 @@
 //  Copyright (c) 2013 Thomas Wilson. All rights reserved.
 //
 
+
 #import "DSGLevel.h"
 #import "DSGHero.h"
-#import "GameCon"
+	//#import "GameCon"
 @interface DSGLevel()
 @property (nonatomic) NSMutableArray *layers;
 @property (nonatomic)SKNode *world;

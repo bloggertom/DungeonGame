@@ -21,7 +21,6 @@
 	if(self){
 		self.position = position;
 		_movementSpeed = defaultSpeed;
-		[self configurePhysics];
 	}
 	return self;
 }
@@ -207,10 +206,6 @@
 -(DSGCharacterFacingDirection)isFacing{
 
 	return _facing;
-}
-
--(void)configurePhysics{
-		//overridden
 }
 
 +(void)loadAssets{

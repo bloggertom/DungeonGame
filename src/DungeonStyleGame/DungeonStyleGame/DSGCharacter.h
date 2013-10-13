@@ -7,18 +7,14 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-
+#import "DSGSprite.h"
 #import "DSGControllable.h"
 #define defaultSpeed 200
 #define animationSpeed 10
 #define DEGREES_TO_RADIANS(degrees) degrees * M_PI / 180
 #define RADIANS_TO_DEGREES(radians) radians * 180 / M_PI
 
-typedef enum : uint32_t {
-	DSGCollitionCategoryProjectile = 0x1 << 0,
-	DSGCollitionCategoryEnemy = 0x1 << 1,
-	DSGCollitionCategoryHero = 0x1 << 2
-}DSGCollitionCategory;
+
 
 typedef enum : uint8_t{
 	DSGCharacterFacingUp = 0,
@@ -34,7 +30,7 @@ typedef enum : uint8_t{
 	DSGAnimationStateDieing
 }DSGAnimationState;
 
-@interface DSGCharacter : SKSpriteNode <DSGControllable>
+@interface DSGCharacter : DSGSprite <DSGControllable>
 
 @property (nonatomic)NSString *name;
 @property (nonatomic)NSInteger health;
@@ -60,7 +56,6 @@ typedef enum : uint8_t{
 -(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state;
 -(void)animationDidFinish:(DSGAnimationState)animationState;
 
--(void)configurePhysics;
 
 +(void)loadAssets;
 
