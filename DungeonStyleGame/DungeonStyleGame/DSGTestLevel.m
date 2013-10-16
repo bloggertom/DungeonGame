@@ -70,6 +70,7 @@
 		label.fontColor = [SKColor greenColor];*/
 		[self addChildNode:node atWorldLayer:DSGWorldLayerGround];
 			//[self addChildNode:label atWorldLayer:DSGDebugLayer];
+		
 		count++;
 	}
 	
