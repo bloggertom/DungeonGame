@@ -16,6 +16,7 @@
 @property(nonatomic, readonly)CGSize size;
 @property(nonatomic, strong)NSMutableArray *mazeTiles;
 @property(nonatomic, strong)DSGTile *start;
+@property(nonatomic, strong)NSMutableArray *path;
 
 -(id)initWithSize:(CGSize)size;
 

@@ -24,9 +24,10 @@
 }
 
 -(DSGMaze*)generateMazeOfSize:(CGSize)size{
-	_currentMaze = [[DSGMaze alloc]initWithSize:size];
-	_mapSize = CGSizeMake((size.width*2)+1, (size.height*2)+1);
-	_mazeSize = size;
+	NSLog(@"Generate map");
+	_mapSize = size;
+	_mazeSize = CGSizeMake((size.width-1)/2, (size.height-1)/2);
+	_currentMaze = [[DSGMaze alloc]initWithSize:_mazeSize];
 	
 	[self createPath];
 	
@@ -35,37 +36,58 @@
 }
 
 -(void)createPath{
+	NSLog(@"Creating Maz path");
 	NSUInteger x = arc4random_uniform(_mazeSize.width);
-	NSUInteger y = arc4random_uniform(_mazeSize.height);
+	NSUInteger y = arc4random_uniform(_mazeSize.height-1);
+	y *= _mazeSize.width-1;
 	NSMutableArray *stack = [[NSMutableArray alloc]init];
 	int visitedCount = 1;
-	_currentTile = [_currentMaze.mazeTiles objectAtIndex:x*y];
+	_currentTile = [_currentMaze.mazeTiles objectAtIndex:x+y];
 	_currentMaze.start = _currentTile;
+	[_currentMaze.path addObject:_currentTile];
 	_currentTile.visited = YES;
 	
 	while (visitedCount < [_currentMaze.mazeTiles count]) {
-		NSArray *array = [_currentTile.walls filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"visited == TRUE"]];
+		NSArray *array = [_currentTile.walls filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+			if([evaluatedObject isKindOfClass:[DSGTile class]]){
+				DSGTile *ob = (DSGTile *)evaluatedObject;
+				return (!ob.visited);
+			}
+			return NO;
+		}]];
+			//NSLog(@"While1");
 		if ([array count]) {
 			int index = arc4random_uniform((int)[array count]);
 			[stack push:_currentTile];
-			DSGTile *temp = [_currentTile.walls objectAtIndex:index];
-			[_currentTile.walls removeObject:temp];
-			[_currentTile.paths replaceObjectAtIndex:DSGTilePathDirectionForward withObject:temp];
-			[temp.walls removeObject:_currentTile];
-			[temp.paths replaceObjectAtIndex:DSGTilePathDirectionBackward withObject:_currentTile];
+			DSGTile *temp = (DSGTile*)[array objectAtIndex:index];
+			[_currentTile.walls replaceObjectAtIndex:[_currentTile.walls indexOfObject:temp] withObject:@"0"];
+			[temp.walls replaceObjectAtIndex:[temp.walls indexOfObject:_currentTile] withObject:@"0"];
+			if (CGPointEqualToPoint(temp.position, _currentTile.position)) {
+				NSLog(@"stop");
+			}
+			
 			_currentTile = temp;
 			_currentTile.visited = YES;
+			[_currentMaze.path addObject:_currentTile];
 			visitedCount ++;
+			
 		}else if([stack count]){
-			_currentTile = [stack pop];
+			DSGTile *temp = [stack pop];
+			_currentTile = temp;
 		}else{
 			NSArray *unvisited = [_currentMaze.mazeTiles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"visited == NO"]];
 			int index = arc4random_uniform((int)[unvisited count]);
 			_currentTile = [unvisited objectAtIndex:index];
 			_currentTile.visited = YES;
 			visitedCount ++;
+			NSLog(@"random");
 		}
 	}
+	NSLog(@"Maz path created");
+}
+
+-(CGSize)mapSize{
+	return _mapSize;
 }
 
 @end

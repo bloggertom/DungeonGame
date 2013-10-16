@@ -10,6 +10,7 @@
 #import "DSGWizard.h"
 #import "DSGPhysicsDelegate.h"
 #import "DSGGrub.h"
+#import "DSGMapBuilder.h"
 @interface DSGTestLevel()
 @property (nonatomic, strong)DSGPhysicsDelegate *physicsDelegate;
 
@@ -56,8 +57,20 @@
 
 #pragma mark - Building Map
 -(void)addBackground{
+	int count = 0;
+		//SKLabelNode *label;
+	SKShapeNode *square = [[SKShapeNode alloc]init];
+	square.strokeColor = [SKColor blueColor];
+	square.path = CGPathCreateWithRect(CGRectMake(0, 0, 500, 500),nil);
+	[self addChildNode:square atWorldLayer:DSGWorldLayerGround];
 	for (SKNode *node in sBackgroundTiles) {
+		/*label = [[SKLabelNode alloc]initWithFontNamed:@"AmericanTypewriter"];
+		label.text = [NSString stringWithFormat:@"%d",count];
+		label.position = node.position;
+		label.fontColor = [SKColor greenColor];*/
 		[self addChildNode:node atWorldLayer:DSGWorldLayerGround];
+			//[self addChildNode:label atWorldLayer:DSGDebugLayer];
+		count++;
 	}
 	
 }
@@ -72,10 +85,13 @@
 }
 
 +(void)loadBackgroundTiles{
-	SKTextureAtlas *backgroundTiles = [SKTextureAtlas atlasNamed:@"Map"];
+		//SKTextureAtlas *backgroundTiles = [SKTextureAtlas atlasNamed:@"Map"];
+	NSLog(@"Load background tiles");
+	DSGMapBuilder *builder = [[DSGMapBuilder alloc]init];
 	
-	sBackgroundTiles = [[NSMutableArray alloc]initWithCapacity:kBackgroundTileDevisor];
-	
+	sBackgroundTiles = [builder buildMapOfSize:CGSizeMake(300, 300) forTilesOfSize:CGSizeMake(32, 32)];
+	NSLog(@"Background tiles loaded %lu", (unsigned long)sBackgroundTiles.count);
+	/*
 	for (int y=0; y < kBackgroundTileDevisor; y++) {
 		for (int x=0; x < kBackgroundTileDevisor; x++) {
 			int ran = arc4random() % kNumTilesTextures+1;
@@ -89,6 +105,7 @@
 			
 		}
 	}
+	 */
 }
 
 + (void)releaseLevelAssets{

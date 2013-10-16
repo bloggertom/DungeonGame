@@ -9,22 +9,25 @@
 #import <Foundation/Foundation.h>
 
 typedef enum: uint8_t{
-	DSGMazeDirectionUp = 1,
+	DSGMazeDirectionUp,
 	DSGMazeDirectionDown,
 	DSGMazeDirectionLeft,
-	DSGMazeDirectionRight
+	DSGMazeDirectionRight,
+	DSGMazeDirectionUnknown
+	
 } DSGMazeDirection;
-typedef enum: uint8_t{
-	DSGTilePathDirectionForward = 1,
-	DSGTilePathDirectionBackward
-}DSGTilePathDirection;
+
 @interface DSGTile : NSObject
 
 @property(nonatomic, readonly)CGPoint position;
 @property(nonatomic)BOOL visited;
 
 @property(nonatomic)NSMutableArray *walls;
-@property(nonatomic)NSMutableArray *paths;
+
+
+@property(nonatomic)CGSize size;
 
 -(id)initWithPosition:(CGPoint)position;
+
++(DSGMazeDirection)mazeDirectionFromTilePosition:(CGPoint)one toPosition:(CGPoint)two;
 @end

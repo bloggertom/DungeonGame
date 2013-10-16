@@ -21,16 +21,33 @@
 	if(self){
 		_position = position;
 		_walls = [[NSMutableArray alloc]initWithCapacity:4];
-		_paths = [[NSMutableArray alloc]initWithCapacity:4];
-		for (int i = 0; i<2; i++) {
-			[_paths addObject:0];
-			for(int j=0; j<2; i++){
-				[_walls addObject:0];
-			}
+		_visited = NO;
+		for (int i = 0; i<4; i++) {
+			[_walls addObject:@"0"];
+			
 		}
 	}
 	return self;
 }
 
++(DSGMazeDirection)mazeDirectionFromTilePosition:(CGPoint)one toPosition:(CGPoint)two{
+	CGFloat deltaX = one.x - two.x;
+	CGFloat deltaY = one.y - two.y;
+	
+	DSGMazeDirection direction = 0;
+	
+	if (deltaX > 0 && deltaY == 0) {
+		direction = DSGMazeDirectionLeft;
+	}else if (deltaX < 0 && deltaY == 0) {
+		direction = DSGMazeDirectionRight;
+	}else if (deltaY > 0 && deltaX == 0){
+		direction = DSGMazeDirectionDown;
+	}else if (deltaY < 0 && deltaX == 0){
+		direction = DSGMazeDirectionUp;
+	}else{
+		direction = DSGMazeDirectionUnknown;
+	}
+	return direction;
+}
 
 @end

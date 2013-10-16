@@ -38,4 +38,6 @@
 -(DSGMaze*)generateMazeOfSize:(CGSize)size;
 +(DSGMaze *)generateMazeOfSize:(CGSize)size;
 
+-(CGSize)mapSize;
+
 @end

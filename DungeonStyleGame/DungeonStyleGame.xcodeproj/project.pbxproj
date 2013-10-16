@@ -23,6 +23,8 @@
 		DB1932181805F48E000023CD /* DSGMaze.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932171805F48E000023CD /* DSGMaze.m */; };
 		DB1932CC180A20AF000023CD /* DSGWall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CB180A20AF000023CD /* DSGWall.m */; };
 		DB1932D0180A211D000023CD /* DSGSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CF180A211D000023CD /* DSGSprite.m */; };
+		DB1932D3180B0A21000023CD /* TWTiledSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */; };
+		DB1932D5180C84F1000023CD /* Debug.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1932D4180C84F1000023CD /* Debug.atlas */; };
 		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
 		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
 		DB20813F17E8C58A00AAEF7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813E17E8C58A00AAEF7F /* UIKit.framework */; };
@@ -102,6 +104,9 @@
 		DB1932CB180A20AF000023CD /* DSGWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGWall.m; sourceTree = "<group>"; };
 		DB1932CE180A211D000023CD /* DSGSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSprite.h; sourceTree = "<group>"; };
 		DB1932CF180A211D000023CD /* DSGSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSprite.m; sourceTree = "<group>"; };
+		DB1932D1180B0A21000023CD /* TWTiledSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTiledSpriteNode.h; sourceTree = "<group>"; };
+		DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTiledSpriteNode.m; sourceTree = "<group>"; };
+		DB1932D4180C84F1000023CD /* Debug.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Debug.atlas; sourceTree = "<group>"; };
 		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -195,6 +200,8 @@
 		DB1932091805F042000023CD /* Generator */ = {
 			isa = PBXGroup;
 			children = (
+				DB1932D1180B0A21000023CD /* TWTiledSpriteNode.h */,
+				DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */,
 				DB19320A1805F063000023CD /* DSGMapBuilder.h */,
 				DB19320B1805F063000023CD /* DSGMapBuilder.m */,
 				DB19320D1805F079000023CD /* DSGTile.h */,
@@ -329,6 +336,7 @@
 		DB20817B17E8D52200AAEF7F /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				DB1932D4180C84F1000023CD /* Debug.atlas */,
 				DB20817C17E8D5BD00AAEF7F /* Map.atlas */,
 			);
 			name = Map;
@@ -497,6 +505,7 @@
 				DB20818C17E90DBE00AAEF7F /* Wizard_Walking_Right.atlas in Resources */,
 				DB20815817E8C58A00AAEF7F /* Spaceship.png in Resources */,
 				DB1931F21803818D000023CD /* Grub_Moving_Right.atlas in Resources */,
+				DB1932D5180C84F1000023CD /* Debug.atlas in Resources */,
 				DB20818917E90D5300AAEF7F /* Wizard_Idle.atlas in Resources */,
 				DB20815017E8C58A00AAEF7F /* Main.storyboard in Resources */,
 			);
@@ -524,6 +533,7 @@
 				DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */,
 				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
 				DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */,
+				DB1932D3180B0A21000023CD /* TWTiledSpriteNode.m in Sources */,
 				DB20814917E8C58A00AAEF7F /* main.m in Sources */,
 				DB1932181805F48E000023CD /* DSGMaze.m in Sources */,
 				DB20818417E908D500AAEF7F /* DSGHero.m in Sources */,

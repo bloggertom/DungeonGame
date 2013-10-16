@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 
 @interface DSGMapBuilder : NSObject
+
+
+@property (nonatomic)SKNode *start;
+@property (nonatomic)SKNode *finish;
+@property (nonatomic, strong)NSArray *floorTextures;
+@property (nonatomic, strong)NSArray *wallTexture;
+
+-(id)initWithFloorTexture:(SKTexture *)floorTexture andWallTexture:(SKTexture *)wallTexture;
+-(id)initWithFloorTextures:(NSArray*)floorTextures andWallTextures:(NSArray*)wallTextures;
+
+-(NSMutableArray*)buildMapOfSize:(CGSize)size forTilesOfSize:(CGSize)tileSize;
 
 @end
