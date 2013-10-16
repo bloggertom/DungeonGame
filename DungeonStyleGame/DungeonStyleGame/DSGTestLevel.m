@@ -13,7 +13,8 @@
 #import "DSGMapBuilder.h"
 @interface DSGTestLevel()
 @property (nonatomic, strong)DSGPhysicsDelegate *physicsDelegate;
-
+@property (nonatomic)CGFloat worldSize;
+@property (nonatomic)CGFloat tileSize;
 @end
 
 @implementation DSGTestLevel
@@ -24,12 +25,10 @@
 	if(self){
 		
 		_physicsDelegate = [[DSGPhysicsDelegate alloc]init];
-		if(_physicsDelegate){
-			NSLog(@"physics delegate");
-		}
-		
 		self.physicsWorld.contactDelegate = _physicsDelegate;
 		self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+		_worldSize = 3000;
+		_tileSize = 500;
 		[self addBackground];
 	}
 	return self;
@@ -86,27 +85,23 @@
 }
 
 +(void)loadBackgroundTiles{
-		//SKTextureAtlas *backgroundTiles = [SKTextureAtlas atlasNamed:@"Map"];
+	SKTextureAtlas *backgroundTextures = [SKTextureAtlas atlasNamed:@"Map"];
+	SKTextureAtlas *wallTextures = [SKTextureAtlas atlasNamed:@"Debug"];
 	NSLog(@"Load background tiles");
-	DSGMapBuilder *builder = [[DSGMapBuilder alloc]init];
+	
+	NSMutableArray *floor = [[NSMutableArray alloc]init];
+	for (NSString *name in backgroundTextures.textureNames) {
+		[floor addObject:[backgroundTextures textureNamed:name]];
+	}
+	NSMutableArray *walls = [[NSMutableArray alloc]init];
+	for (NSString *name in wallTextures.textureNames) {
+		[walls addObject:[wallTextures textureNamed:name]];
+	}
+	DSGMapBuilder *builder = [[DSGMapBuilder alloc]initWithFloorTextures:floor andWallTextures:walls];
 	
 	sBackgroundTiles = [builder buildMapOfSize:CGSizeMake(300, 300) forTilesOfSize:CGSizeMake(32, 32)];
 	NSLog(@"Background tiles loaded %lu", (unsigned long)sBackgroundTiles.count);
-	/*
-	for (int y=0; y < kBackgroundTileDevisor; y++) {
-		for (int x=0; x < kBackgroundTileDevisor; x++) {
-			int ran = arc4random() % kNumTilesTextures+1;
-				//NSLog(@"Random Number = %d", ran);
-			SKTexture *texture = [backgroundTiles textureNamed:[NSString stringWithFormat:@"%d",ran]];
-			CGPoint position = CGPointMake((x * kGroundTileSize) - kWorldCenter,
-										   (kWorldSize - (y * kGroundTileSize)) - kWorldCenter);
-			SKSpriteNode *tile = [[SKSpriteNode alloc]initWithTexture:texture];
-			tile.position = position;
-			[sBackgroundTiles addObject:tile];
-			
-		}
-	}
-	 */
+	
 }
 
 + (void)releaseLevelAssets{
