@@ -1,9 +1,9 @@
 #Dungeon Style Game
 
-This is a firt attempt at trying to create a game for the iPad and iPhone.
+This is a first attempt at trying to create a game for the iPad and iPhone.
 
 This project is changing quickly with frequent updates. This readme
-will be updated with current progress
+will be updated with the current progress.
 
 Game written for iOS using the new SpriteKit.
 
@@ -29,6 +29,6 @@ It is now possible to run the game on a iPhone with an external monitor. A
 very simple joy pad appears on the screen of the iphone which allows you
 to move the wizard around the screen and attack the grub.
 
-##Sprite
+##Sprites
 All sprite are made by me which is why the art is amateurish but hell
 I wanted to give it a bash.
