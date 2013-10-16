@@ -187,9 +187,6 @@
 	return walls;
 }
 
--(void)wallForExtentionTile:(DSGWall *)tile ofSize:(CGSize)size{
-	NSMutableArray *walls = [[NSMutableArray alloc]init];
-}
 +(CGPoint)convertMazePoint:(CGPoint)mazePoint toMapPointWithTileSize:(CGSize)size{
 	CGPoint newPoint = CGPointMake((mazePoint.x*2)+1, (mazePoint.y*2)+1);
 	CGPoint thePoint = CGPointMake((newPoint.x*size.width)-(size.width/2),(newPoint.y*size.height)-(size.height/2));

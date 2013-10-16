@@ -13,8 +13,9 @@
 -(void)configurePhysics{
 	self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
 	self.physicsBody.categoryBitMask = DSGCollitionCategoryWall;
-	self.physicsBody.collisionBitMask = DSGCollitionCategoryHero | DSGCollitionCategoryProjectile| DSGCollitionCategoryEnemy;
+	self.physicsBody.collisionBitMask = 0;
 	self.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy | DSGCollitionCategoryHero | DSGCollitionCategoryProjectile;
+	
 }
 
 @end

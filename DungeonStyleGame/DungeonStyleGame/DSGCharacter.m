@@ -17,7 +17,7 @@
 @implementation DSGCharacter
 
 -(id)initWithTexture:(SKTexture *)texture atPosition:(CGPoint)position{
-	self = [super initWithTexture:texture];
+	self = [super initWithTexture:texture atPosition:position];
 	if(self){
 		self.position = position;
 		_movementSpeed = defaultSpeed;

@@ -43,7 +43,7 @@
 	self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
 	self.physicsBody.categoryBitMask = DSGCollitionCategoryHero;
 	self.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy;
-	self.physicsBody.collisionBitMask = 0;
+	self.physicsBody.collisionBitMask = DSGCollitionCategoryWall;
 	self.physicsBody.allowsRotation = NO;
 		//self.physicsBody.dynamic = NO;
 
