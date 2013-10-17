@@ -37,8 +37,6 @@
 	skView.showsFPS = YES;
 	skView.showsNodeCount = YES;
 	
-		//NSLog(@"Height: %f, Width %f", self.view.frame.size.height, self.view.frame.size.width);
-	
 	[DSGTestLevel loadAssetsWithHandler:^{
 			// Create and configure the scene.
 		[_callback externalControllerDidFinishLoadingAssets];
@@ -48,6 +46,7 @@
 		SKScene * scene = [DSGTestLevel sceneWithSize:size];
 		scene.scaleMode = SKSceneScaleModeFill;//best so far
 		[skView presentScene:scene];
+			//callback to main view controller.
 		[_callback externalControllerDidPresentScene:scene];
 	}];
 }
@@ -59,6 +58,7 @@
 }
 
 -(void)startGame{
+		//go go go
 	SKView *skView = (SKView *)self.view;
 	DSGTestLevel *level = (DSGTestLevel *)skView.scene;
 	[level startLevel];

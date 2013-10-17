@@ -22,6 +22,8 @@
 		_position = position;
 		_walls = [[NSMutableArray alloc]initWithCapacity:4];
 		_visited = NO;
+		
+			//if it's @"0" stand for no wall here...
 		for (int i = 0; i<4; i++) {
 			[_walls addObject:@"0"];
 			

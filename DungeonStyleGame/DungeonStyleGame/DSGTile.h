@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+	//directions of neighbors.
 typedef enum: uint8_t{
 	DSGMazeDirectionUp,
 	DSGMazeDirectionDown,
@@ -19,13 +20,10 @@ typedef enum: uint8_t{
 
 @interface DSGTile : NSObject
 
-@property(nonatomic, readonly)CGPoint position;
-@property(nonatomic)BOOL visited;
-
-@property(nonatomic)NSMutableArray *walls;
-
-
-@property(nonatomic)CGSize size;
+@property(nonatomic, readonly)CGPoint position;//position in grid.
+@property(nonatomic)BOOL visited;//has this tile been visited? not really used in the end.
+@property(nonatomic)NSMutableArray *walls;//walls array hold neighbors. A tile in here means there is a wall between it and self
+@property(nonatomic)CGSize size;//size of tile.
 
 -(id)initWithPosition:(CGPoint)position;
 

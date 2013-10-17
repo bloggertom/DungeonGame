@@ -29,7 +29,6 @@
 	
 	if (self) {
 			//self.collisionBox = self.frame;//CGRectMake(0,0, texture.size.width, texture.size.height);
-		
 		NSString *emitterpath = [[NSBundle mainBundle]pathForResource:@"MagicMissileEmitter" ofType:@"sks"];
 		_magicEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:emitterpath];
 		
@@ -40,17 +39,19 @@
 }
 
 -(void)configurePhysics{
+		//set up phyics body, called by DSGSprite's init
 	self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
 	self.physicsBody.categoryBitMask = DSGCollitionCategoryHero;
 	self.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy;
 	self.physicsBody.collisionBitMask = DSGCollitionCategoryWall;
 	self.physicsBody.allowsRotation = NO;
-		//self.physicsBody.dynamic = NO;
+		
 
 		
 }
 
 -(void)fireAttackingAnimation{
+		//check direction we're facing.
 	switch (self.isFacing) {
 		case DSGCharacterFacingRight:
 			[self fireMagicMissileWithAnimationFrames:[self firingRightFrames]];
@@ -65,7 +66,7 @@
 }
 
 -(void)animationDidFinish:(DSGAnimationState)animationState{
-		//NSLog(@"animation did finish");
+		//once we're done killing just hang out.
 	switch (animationState) {
 		case DSGAnimationStateAttacking:
 			if (!self.attackRequested) {
@@ -78,49 +79,63 @@
 	}
 }
 -(void)fireMagicMissileWithAnimationFrames:(NSArray*)frames{
+	
+		//fast and small needs exact collision precision
 	self.physicsBody.usesPreciseCollisionDetection = YES;
+		//check we're not already doing it.
 	SKAction *action = [self actionForKey:@"firing"];
 	if (action) {
 		return;
 	}
 	
+		//build animation squence
 	SKAction *animation = [SKAction runBlock:^{
 		[self fireAnimation:frames forKey:@"firing" forState:DSGAnimationStateAttacking];
 	}];
+		//fire projectile half way through animation 0.4 seconds in.
 	SKAction *pause = [SKAction waitForDuration:0.4];
 	SKAction *fire = [SKAction runBlock:^{
-		[self fireMagicMissile];
+		[self fireMagicMissile];//FIRE ZEE MISSILE!
 	}];
 	
-	
+		//build squence
 	SKAction *fireSequence = [SKAction sequence:@[pause,fire]];
-	
+		//build group to run simaltaniously.
 	SKAction *group = [SKAction group:@[animation, fireSequence]];
+	
+		//run them
 	[self runAction:group withKey:@"missile"];
 	self.physicsBody.usesPreciseCollisionDetection = NO;
 }
 -(void)fireMagicMissile{
-	
+		//retrieve scene
 	DSGLevel *scene = (DSGLevel *)[self scene];
 	
+		//create magic missile
 	SKSpriteNode *magicMissile = [SKSpriteNode spriteNodeWithTexture:[[self magicMissileRightFrames]firstObject]];
 	
+		//configure physics
 	magicMissile.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:magicMissile.frame.size];
 	magicMissile.physicsBody.categoryBitMask = DSGCollitionCategoryProjectile;
 	magicMissile.physicsBody.contactTestBitMask = DSGCollitionCategoryEnemy;
 	magicMissile.physicsBody.collisionBitMask = 0;
 	
+		//configure emitter
 	SKEmitterNode *emitter = [[self magicEmitter]copy];
+		//set root node for partical referance
 	emitter.targetNode = [self.scene childNodeWithName:@"world"];
+		//add to missile
 	[magicMissile addChild:emitter];
 	
-	
+		//build animation
 	SKAction *animation = [SKAction animateWithTextures:[self magicMissileRightFrames] timePerFrame:0.2 resize:YES restore:NO];
+		//repeat it forever
 	SKAction *repeater = [SKAction repeatActionForever:animation];
 	
+		//get position of character
 	CGPoint p = self.position;
 	
-	
+		//change firing direction and rotation depending on direction self is facing
 	CGFloat x = 0;
 	CGFloat y = 0;
 	switch (self.isFacing) {
@@ -145,13 +160,14 @@
 			break;
 	}
 	
-	
+		//set position
 	magicMissile.position = p;
-	
+		//run firing animation
 	[magicMissile runAction:repeater];
-	
+		//add missile to world
 	[scene addChildNode:magicMissile atWorldLayer:DSGCharacterLayer];
 	
+		//animate it moving across screen
 	SKAction *movement = [SKAction moveByX:x y:y duration:1];
 	SKAction *removal = [SKAction removeFromParent];
 	[magicMissile runAction:[SKAction sequence:@[movement, removal]]];
@@ -160,7 +176,7 @@
 
 +(void)loadAssets{
 	[super loadAssets];
-	
+		//load assets only once
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{
 			//NSLog(@"Boo");
@@ -261,7 +277,6 @@ static NSMutableArray *sWalkingDownFrames;
 
 static NSMutableArray *sFiringRightFrames;
 -(NSArray *)firingRightFrames{
-		//NSLog(@"getting frames");
 	return sFiringRightFrames;
 }
 static NSMutableArray *sFiringLeftFrames;

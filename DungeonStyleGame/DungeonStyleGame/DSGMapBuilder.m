@@ -41,30 +41,35 @@
 	DSGMazeGenerator *generator = [[DSGMazeGenerator alloc]init];
 	_mapSize = size;
 	_tileSize = size;
+		//detirmin number of tiles in map
 	CGFloat tWidth = lroundf(size.width / tileSize.width);
 	CGFloat tHeight = lroundf(size.height / tileSize.height);
-	
+		//ensure it's an odd number.
 	((int)tWidth%2 == 0)? tWidth++ : tWidth;
 	((int)tHeight%2 == 0)? tHeight++ : tHeight;
 	CGSize tMazeSize = CGSizeMake(tWidth, tHeight);
-	_mazeSize = tMazeSize;
+	
 	NSLog(@"Iniciating Maz Generator");
+	
+		//use maze generator to create 'perfect' maze.
 	DSGMaze *maze = [generator generateMazeOfSize:tMazeSize];
 	
 	
-
+		//build map from maze and return
 	return [self buildMapFromMaze:maze withTilesOfSize:(CGSize)tileSize];
 }
 
 -(NSMutableArray*)buildMapFromMaze:(DSGMaze *)maze withTilesOfSize:(CGSize)tileSize{
 	NSMutableArray *mapNodes = [[NSMutableArray alloc]init];
 
+		//loop through maze tiles to create map.
 	NSLog(@"Building Map array");
 	for(DSGTile *currentTile in maze.path) {
-			//NSLog(@"While 2");
 		currentTile.size = tileSize;
 		DSGTile *next = nil;
 		DSGTile *previous = nil;
+		
+			//get next and previous tiles.
 		if ([maze.path indexOfObject:currentTile] != maze.path.count-1) {
 			next = [maze.path objectAtIndex:[maze.path indexOfObject:currentTile]+1];
 		}
@@ -72,26 +77,32 @@
 			previous = [maze.path objectAtIndex:[maze.path indexOfObject:currentTile]-1];
 		}
 		
-		DSGMazeDirection direction;
 		
+			//get direction of travel
+		DSGMazeDirection direction;
 		if (next) {
 			direction = [DSGTile mazeDirectionFromTilePosition:currentTile.position toPosition:next.position];
 			NSLog(@"Next Used");
 		}
+			//if dead end use previous tile instead.
 		if (next == nil || direction == DSGMazeDirectionUnknown) {
 			NSLog(@"Previous used %d", direction);
 			direction = [DSGTile mazeDirectionFromTilePosition:currentTile.position toPosition:previous.position];
 		}
-		
+			//get position in tiles for map
 		CGPoint mapTilePosition = [DSGMapBuilder convertMazePoint:currentTile.position toMapPointWithTileSize:tileSize];
 		
+		
+			//get a random texture and use it to create floor tile
 		SKTexture *texture = [_floorTextures objectAtIndex:arc4random_uniform((int)_floorTextures.count)];
 		SKSpriteNode *mapTile = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
 		mapTile.position = mapTilePosition;
 		
-		
+			//add floor tile to mapNodes array
 		[mapNodes addObject:mapTile];
-			//extend paths across to next maze tile.
+		
+		
+			//Join maze tiles together to form complete maze
 		if ([[currentTile.walls objectAtIndex:DSGMazeDirectionRight] isKindOfClass:[NSString class]] && currentTile.position.x != (maze.size.width-1)) {
 			SKSpriteNode *pathRightNode = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
 			pathRightNode.position = CGPointMake((mapTilePosition.x + mapTile.size.width), mapTilePosition.y);
@@ -102,6 +113,8 @@
 			pathDownNode.position = CGPointMake(mapTilePosition.x, mapTilePosition.y-mapTile.size.height);
 			[mapNodes addObject:pathDownNode];
 		}
+		
+			//surround inner maze with walls for collitions
 			[mapNodes addObjectsFromArray:[self generateWallsForMazeTile:currentTile ofSize:tileSize]];
 	}
 	NSLog(@"Map Array built");
@@ -114,24 +127,31 @@
 -(NSArray *)generateWallsForMazeTile:(DSGTile*)tile ofSize:(CGSize)size{
 	NSMutableArray *walls = [[NSMutableArray alloc]init];
 	CGPoint mapPoint = [DSGMapBuilder convertMazePoint:tile.position toMapPointWithTileSize:size];
+		//check walls array for direction of walls
+		//all walls are 3 times the length of standard tile to make up for difference in space
+		//between a maze tile and a map tile.
 	
+		//up
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionUp]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Up"] atPosition:CGPointMake(mapPoint.x, mapPoint.y + size.height)];
 		wall.size = CGSizeMake(size.width*3, size.height);
 		[walls addObject:wall];
 	}
+		//right
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionRight]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Right"] atPosition:CGPointMake(mapPoint.x + size.width, mapPoint.y)];
 		wall.size = CGSizeMake(size.width, size.height*3);
 		[walls addObject:wall];
 		
 	}
+		//left
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionLeft]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Left"] atPosition:CGPointMake(mapPoint.x - size.width, mapPoint.y)];
 		wall.size = CGSizeMake(size.width, size.height*3);
 		[walls addObject:wall];
 		
 	}
+		//down
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionDown]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Down"] atPosition:CGPointMake(mapPoint.x, mapPoint.y - size.height)];
 		wall.size = CGSizeMake(size.width*3, size.height);

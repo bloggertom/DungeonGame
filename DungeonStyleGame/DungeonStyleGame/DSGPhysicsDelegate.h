@@ -10,5 +10,4 @@
 
 @interface DSGPhysicsDelegate : NSObject <SKPhysicsContactDelegate>
 
-
 @end

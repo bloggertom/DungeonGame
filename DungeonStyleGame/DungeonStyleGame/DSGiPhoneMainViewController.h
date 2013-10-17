@@ -13,12 +13,12 @@
 
 @interface DSGiPhoneMainViewController : UIViewController
 
-@property(nonatomic, strong)DSGiPhoneExternalViewController *gameViewController;
-@property(nonatomic, strong)DSGGamePadViewController *gamePadController;
-@property(nonatomic)IBOutlet UIView *startingView;
-@property(nonatomic)IBOutlet UIButton *startButton;
-@property(nonatomic)IBOutlet UIView *coverView;
-@property(nonatomic)IBOutlet UILabel *message;
+@property(nonatomic, strong)DSGiPhoneExternalViewController *gameViewController; //where the games is played
+@property(nonatomic, strong)DSGGamePadViewController *gamePadController; //where the controller is made
+@property(nonatomic)IBOutlet UIView *startingView; //to show the start button
+@property(nonatomic)IBOutlet UIButton *startButton; //the said start button
+@property(nonatomic)IBOutlet UIView *coverView;//view of covering
+@property(nonatomic)IBOutlet UILabel *message;//message which be contain there within the covering view
 @property(nonatomic)IBOutlet UIActivityIndicatorView *activityIndicator;
 
 -(IBAction)startButtonPushed:(id)sender;

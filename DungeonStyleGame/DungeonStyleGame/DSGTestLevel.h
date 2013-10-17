@@ -13,7 +13,7 @@
 #define kNumTilesTextures 4
 #define kGroundTileSize 32
 #define kBackgroundTileDevisor (kWorldSize/kGroundTileSize)
-@interface DSGTestLevel : DSGLevel <SKPhysicsContactDelegate>
+@interface DSGTestLevel : DSGLevel
 
 -(void)startLevel;
 

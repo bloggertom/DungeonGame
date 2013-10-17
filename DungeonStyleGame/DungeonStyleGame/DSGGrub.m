@@ -12,7 +12,7 @@
 
 -(id)initAtPosition:(CGPoint)position{
 	
-	SKTextureAtlas *atlas= [SKTextureAtlas atlasNamed:@"Grub_Idle"];
+	SKTextureAtlas *atlas= [SKTextureAtlas atlasNamed:@"Grub_Idle"];//temporary.
 	SKTexture *texture = [atlas textureNamed:@"Grub_idle_1"];
 	self = [super initWithTexture:texture atPosition:position];
 	
@@ -41,6 +41,8 @@
 		[sIdleFrames addObject:idle1];
 	});
 }
+
+
 static NSMutableArray *sIdleFrames;
 -(NSArray *)idleFrames{
 	return sIdleFrames;

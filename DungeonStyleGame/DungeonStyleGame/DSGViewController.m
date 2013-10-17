@@ -23,6 +23,7 @@
 	
 	NSLog(@"Height: %f, Width %f", self.view.frame.size.height, self.view.frame.size.width);
 	
+		//ask level to load assets and implament completion handler.
 	[DSGTestLevel loadAssetsWithHandler:^{
 			// Create and configure the scene.
 		CGSize size = skView.bounds.size;
@@ -58,12 +59,17 @@
 }
 
 -(IBAction)start:(id)sender{
+		//start button pushed
+	
+		//get view
 	SKView *skView = (SKView*)self.view;
 	DSGTestLevel *scene = (DSGTestLevel *)skView.scene;
+		//animate away start button, and in attack button
 	[UIView animateWithDuration:1 animations:^{
 		self.startButton.alpha = 0;
 		self.attackButton.alpha = 1;
 	} completion:^(BOOL finished) {
+			//begin the game.
 		[scene startLevel];
 	}];
 	
@@ -71,6 +77,7 @@
 }
 
 -(IBAction)attack:(id)sender{
+		//ATTACK!
 	SKView *view = (SKView*)self.view;
 	DSGTestLevel *scene = (DSGTestLevel *)view.scene;
 	[scene requestAttack];

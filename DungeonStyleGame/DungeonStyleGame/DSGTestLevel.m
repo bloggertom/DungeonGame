@@ -23,20 +23,22 @@
 	self = [super initWithSize:size];
 	
 	if(self){
-		
+			//set up world physics
 		_physicsDelegate = [[DSGPhysicsDelegate alloc]init];
 		self.physicsWorld.contactDelegate = _physicsDelegate;
 		self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+			//world sizes
 		_worldSize = 3000;
 		_tileSize = 500;
+		
+			//add background nodes
 		[self addBackground];
 	}
 	return self;
 }
--(void)didBeginContact:(SKPhysicsContact *)contact{
-	NSLog(@"contact");
-}
+
 -(void)startLevel{
+		//let the games begin
 	DSGWizard *hero = [[DSGWizard alloc]initAtPosition:CGPointMake(200,200)];
 	NSLog(@"Width %f, Height %f", hero.size.width, hero.size.height);
 	DSGGrub *grub = [[DSGGrub alloc]initAtPosition:CGPointMake(300, 300)];
@@ -50,7 +52,7 @@
 #pragma mark - Update Cycle
 
 -(void)updateForTimeIntervale:(NSTimeInterval)time{
-	
+		//update hero
 	[self.hero updateForTimeIntervale:time];
 }
 
@@ -79,16 +81,17 @@
 #pragma mark - Load Assets
 
 +(void)loadAssets{
+		//load background tiles
 	[self loadBackgroundTiles];
-	
+		//ask wizard to load assets
 	[DSGWizard loadAssets];
 }
 
 +(void)loadBackgroundTiles{
+		//load textures for background and walls
 	SKTextureAtlas *backgroundTextures = [SKTextureAtlas atlasNamed:@"Map"];
 	SKTextureAtlas *wallTextures = [SKTextureAtlas atlasNamed:@"Debug"];
 	NSLog(@"Load background tiles");
-	
 	NSMutableArray *floor = [[NSMutableArray alloc]init];
 	for (NSString *name in backgroundTextures.textureNames) {
 		[floor addObject:[backgroundTextures textureNamed:name]];
@@ -97,14 +100,17 @@
 	for (NSString *name in wallTextures.textureNames) {
 		[walls addObject:[wallTextures textureNamed:name]];
 	}
-	DSGMapBuilder *builder = [[DSGMapBuilder alloc]initWithFloorTextures:floor andWallTextures:walls];
 	
+		//create builder from textures
+	DSGMapBuilder *builder = [[DSGMapBuilder alloc]initWithFloorTextures:floor andWallTextures:walls];
+		//build map into sBackgroundTiles (floor and walls)
 	sBackgroundTiles = [builder buildMapOfSize:CGSizeMake(300, 300) forTilesOfSize:CGSizeMake(32, 32)];
 	NSLog(@"Background tiles loaded %lu", (unsigned long)sBackgroundTiles.count);
 	
 }
 
 + (void)releaseLevelAssets{
+		//release static stuff
 	sBackgroundTiles = nil;
 	sLevelDataImage = nil;
 	

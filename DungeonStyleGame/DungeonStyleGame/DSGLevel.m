@@ -22,10 +22,12 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        
+			
+			//create a world
 		_world = [[SKNode alloc]init];
 		[_world setName:@"world"];
 		
+			//give it layers
 		_layers = [[NSMutableArray alloc]init];
 		for(int i=0; i< kWorldLayerCount; i++){
 			SKNode *layer = [[SKNode alloc]init];
@@ -34,8 +36,9 @@
 			[_world addChild:layer];
 			[_layers addObject:layer];
 		}
+			//get ready for mosters
 		_monsters = [[NSMutableArray alloc]init];
-
+			//show the world
 		[self addChild:_world];
 #if DEBUG_COLLISIONS
 		_dbugOverlay = [SKNode node];
@@ -53,34 +56,49 @@
 	[self.dbugOverlay removeAllChildren];
 #endif
 	
-
+		//work out time since last update
 	NSTimeInterval timeSinceLast = currentTime - self.lastTimeUpdate;
 	self.lastTimeUpdate = currentTime;
+		//let everyone know about it
 	[self updateForTimeIntervale:timeSinceLast];
+		//if it's an iPad begin use
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+			//check for movement
 		if(self.hero.movementRequested){
-			[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];//Moved to here as	physics simulartion moves hero slightly FOR NO REASON!.
+				//if movement requested tell hero to update
+			[self.hero moveTowardsTargetLocationForTimeIntervale:timeSinceLast];
+				//if the hero is now in it's target location
 			if (CGPointEqualToPoint(self.hero.position, self.hero.targetLocation)){
+					//no more movement is needed
 				self.hero.movementRequested = NO;
 				self.hero.requestedAnimation = DSGAnimationStateIdle;
 			}
 		
 		}
+			//must be using the iPhone controller
 	}else{
+			//if movement requested
 		if (self.hero.movementRequested) {
+				//get the target direction
 			CGPoint direction = self.hero.targetDirection;
+				//check it's not nothing first
 			if(!CGPointEqualToPoint(direction, CGPointZero)){
-				NSLog(@"MOVE");
+					//then move the character.
 				[self.hero moveInDirection:direction withTimeInterval:timeSinceLast];
+					//ask him to animate walking
 				self.hero.requestedAnimation = DSGAnimationStateWalking;
 			}else if(!self.hero.attackRequested){
+					//check if attacking
 				self.hero.movementRequested = NO;
 				self.hero.requestedAnimation = DSGAnimationStateIdle;
 			}
 		}
 	}
+		//if player want to attack
 	if (self.hero.attackRequested) {
+			//reset boolean
 		self.hero.attackRequested = NO;
+			//animate attacking.
 		self.hero.requestedAnimation = DSGAnimationStateAttacking;
 	}
 
@@ -122,26 +140,19 @@
 		//NSLog(@"Touch Detected");
     
 	if([touches count] == 1 && ![self.hero targetTouch]){
+			//set heros target location to location of touch.
 		UITouch *touch = [touches anyObject];
 		CGPoint position = [touch locationInNode:self];
 		[self.hero setTargetLocation:position];
 		NSLog(@"Target X %f, Target Y %f", position.x, position.y);
-		[self.hero setTargetTouch:touch];
+		[self.hero setTargetTouch:touch];//needed if player drags finger
 		[self.hero requestMovement:YES];
-		
-		
-		/*
-		SKNode *nodeAtTouch = [self nodeAtPoint:position];
-		
-		if([nodeAtTouch isKindOfClass:DSGEnemy]){
-				//attack
-		}
-		 */
 	}
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	if([touches containsObject:self.hero.targetTouch]){
+			//no more touching
 		self.hero.targetTouch = nil;
 	}
 }
@@ -157,6 +168,7 @@
 #pragma mark - Adding Nodes
 
 -(void)addChildNode:(SKNode*)node atWorldLayer:(DSGWorldLayer)layer{
+		//add child node to specific layer.
 	SKNode *layerNode = [_layers objectAtIndex:layer];
 	[layerNode addChild:node];
 }
@@ -166,16 +178,17 @@
 #pragma mark - Static Methods
 #pragma mark - Load Assests
 +(void)loadAssetsWithHandler:(DSGLoadAssesCompleteHandler)callback{
+		//dispatched in background
 		dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0) , ^{
 				//load game assests
-			
 			[self loadAssets];
-			
 			if(!callback){
+					//just return if no callback
 				return;
 			}
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
+					//run call back on main queue
 				callback();
 			});
 		});

@@ -12,10 +12,10 @@
 @interface DSGMapBuilder : NSObject
 
 
-@property (nonatomic)SKNode *start;
-@property (nonatomic)SKNode *finish;
-@property (nonatomic, strong)NSArray *floorTextures;
-@property (nonatomic, strong)NSArray *wallTexture;
+@property (nonatomic)SKNode *start;//start of map
+@property (nonatomic)SKNode *finish;//end of map
+@property (nonatomic, strong)NSArray *floorTextures; //textures for the floor
+@property (nonatomic, strong)NSArray *wallTexture; //textures for the wall (not made yet)
 
 -(id)initWithFloorTexture:(SKTexture *)floorTexture andWallTexture:(SKTexture *)wallTexture;
 -(id)initWithFloorTextures:(NSArray*)floorTextures andWallTextures:(NSArray*)wallTextures;

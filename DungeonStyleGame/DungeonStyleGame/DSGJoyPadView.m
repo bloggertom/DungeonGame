@@ -36,6 +36,7 @@
 	return self;
 }
 -(void)sharedInit{
+		//set up subviews
 	_stickView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width/2, self.bounds.size.height)];
 	_stickView.alpha = 0;
 	
@@ -48,12 +49,12 @@
 	[self addSubview:_actionButton];
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-		//NSLog(@"Touch began");
+		//handle touch events
 	UITouch *touch = [touches anyObject];
 	
 	CGPoint location = [touch locationInView:self];
 	if ([_stickView pointInside:location withEvent:event]) {
-			//NSLog(@"Stick View Touched");
+			//move joy stick to touch location
 		_originPosition = location;
 		_currentPosition = location;
 		_currentTouch = touch;
@@ -62,12 +63,12 @@
 	
 }
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-		//NSLog(@"Touch Moved");
+	
 	for (UITouch *touch in touches) {
 		if (touch == _currentTouch) {
-				//NSLog(@"Found current Touch");
-			_currentPosition = [touch locationInView:self];
 			
+				//find out which direction the touch moved in.
+			_currentPosition = [touch locationInView:self];
 			CGPoint direction;
 			CGFloat x = _currentPosition.x - _originPosition.x;
 			CGFloat y = _originPosition.y - _currentPosition.y;
@@ -79,12 +80,16 @@
 			}else{
 				direction = CGPointZero;
 			}
+				//tell the delegate (view controller)
 			[_delegate joypadMovedInDirection:direction];
 			[self setNeedsDisplay];
 		}
 	}
 }
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+		//hand touch ending
+	
+		//reset perameters
 	if([touches containsObject:_currentTouch]){
 		_currentTouch = nil;
 		_currentPosition = _stickView.center;
@@ -96,13 +101,11 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-		//NSLog(@"Draw Rect");
+		//check for a current touch
 	if (_currentTouch) {
-			//NSLog(@"_current Touch drawRect");
+			//if so draw the thumb stick
 		CGContextRef context = UIGraphicsGetCurrentContext();
-		
 		CGContextSetRGBFillColor(context, 255, 255, 255, 1);
-		
 		CGContextFillRect(context, CGRectMake(_currentPosition.x-THUMB_STICK_RADIUS, _currentPosition.y-THUMB_STICK_RADIUS, THUMB_STICK_RADIUS*2, THUMB_STICK_RADIUS*2));
 	}
 	

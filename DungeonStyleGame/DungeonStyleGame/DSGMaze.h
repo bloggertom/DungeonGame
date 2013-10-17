@@ -13,10 +13,10 @@
 @interface DSGMaze : NSObject
 
 
-@property(nonatomic, readonly)CGSize size;
-@property(nonatomic, strong)NSMutableArray *mazeTiles;
-@property(nonatomic, strong)DSGTile *start;
-@property(nonatomic, strong)NSMutableArray *path;
+@property(nonatomic, readonly)CGSize size;//size in tiles
+@property(nonatomic, strong)NSMutableArray *mazeTiles;//tiles or graph
+@property(nonatomic, strong)DSGTile *start;//where does the maze start
+@property(nonatomic, strong)NSMutableArray *path;//the path through the maze.
 
 -(id)initWithSize:(CGSize)size;
 

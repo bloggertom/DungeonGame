@@ -326,22 +326,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DungeonStyleGame/DSGMazeGenerator.m"
-            timestampString = "403535163.747949"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-createPath"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DungeonStyleGame/DSGMazeGenerator.m"
             timestampString = "403535378.763423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

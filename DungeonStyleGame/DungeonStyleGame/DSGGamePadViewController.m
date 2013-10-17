@@ -30,6 +30,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
+		//set up view bound stretching
 	self.view.autoresizingMask =
 	UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin |
 	UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin |
@@ -50,6 +51,7 @@
 }
 -(void)joypadMovedInDirection:(CGPoint)direction{
 	NSLog(@"Joy Pad Moved");
+		//tell the hero to move
 	_scene.hero.targetDirection = direction;
 	_scene.hero.movementRequested = YES;
 	
@@ -64,15 +66,12 @@
 }
 #pragma mark - External Screen handlers
 -(void)didConnectionExternalScreen:(UIScreen *)screen{
-		//remove messages
-	[self setNeedsStatusBarAppearanceUpdate];
+		//hi
+	[self setNeedsStatusBarAppearanceUpdate];//still not working
 	
 }
 -(void)didDisconnectionExternalScreen{
-		//remove joypad
-	
-	
-		//show messages
+		//do stuff if needed
 }
 
 

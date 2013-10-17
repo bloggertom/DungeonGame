@@ -11,6 +11,8 @@
 @implementation DSGWall
 
 -(void)configurePhysics{
+	
+		//configure physics
 	self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:self.frame.size];
 	self.physicsBody.categoryBitMask = DSGCollitionCategoryWall;
 	self.physicsBody.collisionBitMask = 0;

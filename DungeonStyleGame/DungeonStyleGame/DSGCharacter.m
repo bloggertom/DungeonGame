@@ -28,6 +28,7 @@
 -(void)updateForTimeIntervale:(NSTimeInterval)time{
 		//NSLog(@"Update hero");
 	if (_isAnimated) {
+			//if isAnimation animate god damn it!
 		[self processAnimationRequest];
 	}
 	
@@ -36,7 +37,7 @@
 #pragma mark - Animation process
 
 -(void)processAnimationRequest{
-	
+		//check animation which needs to be run
 	switch (_requestedAnimation) {
 		case DSGAnimationStateWalking:
 				//NSLog(@"Running walking animation");
@@ -56,6 +57,7 @@
 }
 
 -(void)fireWalkAnimation{
+		//check direction to walk
 	switch (_facing) {
 		case DSGCharacterFacingRight:
 			[self fireAnimation:[self walkingRightFrames] forKey:@"walk_right" forState:(DSGAnimationState)DSGAnimationStateWalking];
@@ -79,31 +81,31 @@
 }
 
 -(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state{
+		//check if action is already being run
 	SKAction *action = [self actionForKey:key];
-		//NSLog(@"%@",key);
 	if (action) {
-			//NSLog(@"returning");
 		return;
 	}
-	
+		//build animation SKAction
 	SKAction *animation = [SKAction animateWithTextures:frames timePerFrame:1.0/animationSpeed resize:YES restore:NO];
 	SKAction *completion = [SKAction runBlock:^{
+			//let people know it's finished
 			[self animationHasFinished:(DSGAnimationState)state];
 		
 	}];
+		//build animation sqence and run it.
 	SKAction *squence = [SKAction sequence:@[animation, completion]];
 	[self runAction:squence withKey:key];
 }
 
 -(void)idle{
-	
-	SKTexture *n =[[self idleFrames]objectAtIndex:_facing];
+		//this is what we do when we idle
+	SKTexture *n =[[self idleFrames]objectAtIndex:_facing];//facing corresponds to the index of the needed idle frame
 	NSMutableArray *frames = [[NSMutableArray alloc]init];
 		//for some reason sprite jitters to walking animation sometimes dispite restore being set to NO
 	for(int i=0; i<4; i++){
 		[frames addObject:n];
 	}
-		//NSLog(@"Firing idel");
 	[self fireAnimation:frames forKey:[NSString stringWithFormat:@"Idelframe_%d",_facing]forState:(DSGAnimationState)DSGAnimationStateIdle];
 }
 
@@ -122,7 +124,7 @@
 }
 -(void)turnToFaceRadion:(CGFloat)radions{
 	double degrees = RADIANS_TO_DEGREES(radions);
-	
+		//set direction to face
 	if (degrees <= 45 && degrees > -45) {
 		NSLog(@"Facing Up");
 		_facing = DSGCharacterFacingUp;
@@ -136,17 +138,17 @@
 	}
 	NSLog(@"Facing %d, degrees %f", _facing, degrees);
 }
+	//helper function
 -(CGFloat)calculateAngleBetweenPoint:(CGPoint)first andPoint:(CGPoint)second{
 	CGFloat deltaX = first.x - second.x;
 	CGFloat deltaY = first.y - second.y;
-	
-	
 	CGFloat ang = atan2f(deltaX, deltaY);
 	return ang;
 }
 
 -(void)moveTowardsTargetLocationForTimeIntervale:(NSTimeInterval)timeInterval{
 	CGPoint currentLocation = self.position;
+		//THis is triganomitry... i know that much
 	CGFloat deltaX = self.targetLocation.x - currentLocation.x;
 	CGFloat deltaY = self.targetLocation.y - currentLocation.y;
 	CGFloat deltaT = self.movementSpeed * timeInterval;
@@ -155,21 +157,19 @@
 	CGFloat newX = currentLocation.x + sinf(ang)*deltaT;
 	CGFloat newY = currentLocation.y + cosf(ang)*deltaT;
 	
-		//NSLog(@"newX %f, newY %f", newX, newY);
 	double distanceRemaining = hypotf(deltaX, deltaY);
-		//NSLog(@"Distance Remaining %f, DeltaT %f", distanceRemaining, deltaT);
+		
 	if(distanceRemaining < deltaT){
 		self.position = self.targetLocation;
 	}else{
 		self.position = CGPointMake(newX, newY);
 		
 	}
-	
+		//request walking animation
 	self.requestedAnimation = DSGAnimationStateWalking;
 }
 
 -(void)moveInDirection:(CGPoint)direction withTimeInterval:(NSTimeInterval)timeInterval{
-		//to be completed
 		//Used for iphone joystick
 	CGPoint currentLocation = self.position;
 	CGFloat deltaX = self.movementSpeed * direction.x;
@@ -185,6 +185,7 @@
 	}else{
 		self.position = CGPointMake(currentLocation.x + sinf(ang)*deltaT, currentLocation.y + cosf(ang)*deltaT);
 	}
+		//reqest walking animation
 	self.requestedAnimation = DSGAnimationStateWalking;
 }
 
