@@ -19,6 +19,7 @@
     SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+	skView.ignoresSiblingOrder = YES;
 	_attackButton.alpha = 0.0;
 	
 	NSLog(@"Height: %f, Width %f", self.view.frame.size.height, self.view.frame.size.width);

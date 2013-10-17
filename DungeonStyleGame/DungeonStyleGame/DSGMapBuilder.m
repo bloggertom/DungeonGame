@@ -94,8 +94,9 @@
 		
 		
 			//get a random texture and use it to create floor tile
-		SKTexture *texture = [_floorTextures objectAtIndex:arc4random_uniform((int)_floorTextures.count)];
-		SKSpriteNode *mapTile = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+			//SKTexture *texture = [_floorTextures objectAtIndex:arc4random_uniform((int)_floorTextures.count)];
+			//SKSpriteNode *mapTile = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+		TWTiledSpriteNode *mapTile = [[TWTiledSpriteNode alloc]initWithTextures:_floorTextures andSize:tileSize];
 		mapTile.position = mapTilePosition;
 		
 			//add floor tile to mapNodes array
@@ -104,12 +105,14 @@
 		
 			//Join maze tiles together to form complete maze
 		if ([[currentTile.walls objectAtIndex:DSGMazeDirectionRight] isKindOfClass:[NSString class]] && currentTile.position.x != (maze.size.width-1)) {
-			SKSpriteNode *pathRightNode = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+				//SKSpriteNode *pathRightNode = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+			TWTiledSpriteNode *pathRightNode = [[TWTiledSpriteNode alloc]initWithTextures:_floorTextures andSize:tileSize];
 			pathRightNode.position = CGPointMake((mapTilePosition.x + mapTile.size.width), mapTilePosition.y);
 			[mapNodes addObject:pathRightNode];
 		}
 		if ([[currentTile.walls objectAtIndex:DSGMazeDirectionDown]isKindOfClass:[NSString class]] && currentTile.position.y != 0) {
-			SKSpriteNode *pathDownNode = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+				//SKSpriteNode *pathDownNode = [SKSpriteNode spriteNodeWithTexture:texture size:tileSize];
+			TWTiledSpriteNode *pathDownNode = [[TWTiledSpriteNode alloc]initWithTextures:_floorTextures andSize:tileSize];
 			pathDownNode.position = CGPointMake(mapTilePosition.x, mapTilePosition.y-mapTile.size.height);
 			[mapNodes addObject:pathDownNode];
 		}

@@ -28,7 +28,7 @@
  */
 #import <SpriteKit/SpriteKit.h>
 
-@interface TWTiledSpriteNode : SKNode
+@interface TWTiledSpriteNode : SKSpriteNode
 
 @property(nonatomic)CGSize size;
 

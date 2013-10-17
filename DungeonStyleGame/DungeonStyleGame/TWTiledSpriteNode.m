@@ -40,9 +40,11 @@
 
 @implementation TWTiledSpriteNode
 @synthesize tileTextures = _tileTextures;
+@synthesize size = _size;
+
 -(id)initWithTexture:(SKTexture*)texture andSize:(CGSize)size{
 	NSArray *array = [NSArray arrayWithObject:texture];
-	self = [self initWithTextures:array andSize:size];
+	self = [self initWithTextures:array andSize:_size];
 	return self;
 }
 
@@ -51,15 +53,12 @@
 	if (self) {
 		_cropNode = [[SKCropNode alloc]init];
 		_mask = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:size];
-		_mask.position = CGPointMake(size.width/2, size.height/2);
 		_cropNode.maskNode = _mask;
-			//_cropNode.position = CGPointMake(size.width/2, size.height/2);
 		_tileTextures = textures;
 		SKTexture *first = [textures firstObject];
 		_widthTiles = size.width / first.size.width;
-		_heightTiles = size.height /first.size.height;
-		_widthTiles = (_widthTiles < 1)? 1 : _widthTiles;
-		_heightTiles = (_heightTiles < 1)? 1 : _heightTiles;
+		_heightTiles = size.height/first.size.height;
+		
 		_size = size;
 		[self addChild:_cropNode];
 		[self reTile];
@@ -70,14 +69,13 @@
 -(void)reTile{
 	[_cropNode removeAllChildren];
 	_mask = [SKSpriteNode spriteNodeWithColor:[UIColor blackColor] size:_size];
-	_mask.position = CGPointMake(_size.width/2, _size.height/2);
 	_cropNode.maskNode = _mask;
 	for (int y=0; y< _heightTiles; y++) {
 		for(int x=0;x< _widthTiles; x++){
-			SKTexture *texture = [_tileTextures objectAtIndex:arc4random_uniform([_tileTextures count])];
+			SKTexture *texture = [_tileTextures objectAtIndex:arc4random_uniform((int)[_tileTextures count])];
 			CGSize textureSize = texture.size;
 			SKSpriteNode *tile = [SKSpriteNode spriteNodeWithTexture:texture];
-			tile.position = CGPointMake((x * textureSize.width)+(textureSize.width/2), (y * textureSize.height)+(textureSize.height/2));
+			tile.position = CGPointMake((x * textureSize.width)-(_size.width/2), (y * textureSize.height)-(_size.height/2));
 			[_cropNode addChild:tile];
 			
 		}

@@ -23,7 +23,6 @@
 		DB1932181805F48E000023CD /* DSGMaze.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932171805F48E000023CD /* DSGMaze.m */; };
 		DB1932CC180A20AF000023CD /* DSGWall.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CB180A20AF000023CD /* DSGWall.m */; };
 		DB1932D0180A211D000023CD /* DSGSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932CF180A211D000023CD /* DSGSprite.m */; };
-		DB1932D3180B0A21000023CD /* TWTiledSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */; };
 		DB1932D5180C84F1000023CD /* Debug.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB1932D4180C84F1000023CD /* Debug.atlas */; };
 		DB20813B17E8C58A00AAEF7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813A17E8C58A00AAEF7F /* Foundation.framework */; };
 		DB20813D17E8C58A00AAEF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB20813C17E8C58A00AAEF7F /* CoreGraphics.framework */; };
@@ -54,6 +53,7 @@
 		DB42CAF417F4EA4C00BE10EA /* MagicMissileEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF217F4EA4C00BE10EA /* MagicMissileEmitter.sks */; };
 		DB42CAF517F4EA4C00BE10EA /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF317F4EA4C00BE10EA /* spark.png */; };
 		DB42CAF717F4ED8100BE10EA /* emitter_partical.png in Resources */ = {isa = PBXBuildFile; fileRef = DB42CAF617F4ED8100BE10EA /* emitter_partical.png */; };
+		DB79B0C71810AD2300AB6789 /* TWTiledSpriteNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DB79B0C61810AD2300AB6789 /* TWTiledSpriteNode.m */; };
 		DB933BAC17FCD87D0056623B /* Wizard_Firing_Left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DB933BAB17FCD87D0056623B /* Wizard_Firing_Left.atlas */; };
 		DB933BAE17FD85C50056623B /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB933BAD17FD85C50056623B /* iPhone.storyboard */; };
 		DBA429DA17F62683009CCC30 /* Wizard_Walking_Up.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */; };
@@ -104,8 +104,6 @@
 		DB1932CB180A20AF000023CD /* DSGWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGWall.m; sourceTree = "<group>"; };
 		DB1932CE180A211D000023CD /* DSGSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSGSprite.h; sourceTree = "<group>"; };
 		DB1932CF180A211D000023CD /* DSGSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSGSprite.m; sourceTree = "<group>"; };
-		DB1932D1180B0A21000023CD /* TWTiledSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTiledSpriteNode.h; sourceTree = "<group>"; };
-		DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTiledSpriteNode.m; sourceTree = "<group>"; };
 		DB1932D4180C84F1000023CD /* Debug.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Debug.atlas; sourceTree = "<group>"; };
 		DB20813717E8C58A00AAEF7F /* DungeonStyleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DungeonStyleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB20813A17E8C58A00AAEF7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -145,6 +143,8 @@
 		DB42CAF217F4EA4C00BE10EA /* MagicMissileEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicMissileEmitter.sks; sourceTree = "<group>"; };
 		DB42CAF317F4EA4C00BE10EA /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		DB42CAF617F4ED8100BE10EA /* emitter_partical.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emitter_partical.png; sourceTree = "<group>"; };
+		DB79B0C51810AD2300AB6789 /* TWTiledSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTiledSpriteNode.h; sourceTree = "<group>"; };
+		DB79B0C61810AD2300AB6789 /* TWTiledSpriteNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTiledSpriteNode.m; sourceTree = "<group>"; };
 		DB933BAB17FCD87D0056623B /* Wizard_Firing_Left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Firing_Left.atlas; sourceTree = "<group>"; };
 		DB933BAD17FD85C50056623B /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		DBA429D917F62683009CCC30 /* Wizard_Walking_Up.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Wizard_Walking_Up.atlas; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 		DB1932091805F042000023CD /* Generator */ = {
 			isa = PBXGroup;
 			children = (
-				DB1932D1180B0A21000023CD /* TWTiledSpriteNode.h */,
-				DB1932D2180B0A21000023CD /* TWTiledSpriteNode.m */,
+				DB79B0C51810AD2300AB6789 /* TWTiledSpriteNode.h */,
+				DB79B0C61810AD2300AB6789 /* TWTiledSpriteNode.m */,
 				DB19320A1805F063000023CD /* DSGMapBuilder.h */,
 				DB19320B1805F063000023CD /* DSGMapBuilder.m */,
 				DB19320D1805F079000023CD /* DSGTile.h */,
@@ -533,7 +533,7 @@
 				DB20815617E8C58A00AAEF7F /* DSGLevel.m in Sources */,
 				DB20818117E904F900AAEF7F /* DSGCharacter.m in Sources */,
 				DB1931EA180379F5000023CD /* DSGPhysicsDelegate.m in Sources */,
-				DB1932D3180B0A21000023CD /* TWTiledSpriteNode.m in Sources */,
+				DB79B0C71810AD2300AB6789 /* TWTiledSpriteNode.m in Sources */,
 				DB20814917E8C58A00AAEF7F /* main.m in Sources */,
 				DB1932181805F48E000023CD /* DSGMaze.m in Sources */,
 				DB20818417E908D500AAEF7F /* DSGHero.m in Sources */,

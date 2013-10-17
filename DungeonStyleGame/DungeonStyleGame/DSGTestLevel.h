@@ -11,8 +11,8 @@
 #define kWorldSize 2000
 #define kWorldCenter 1000
 #define kNumTilesTextures 4
-#define kGroundTileSize 32
-#define kBackgroundTileDevisor (kWorldSize/kGroundTileSize)
+#define kGroundTileSize 300
+
 @interface DSGTestLevel : DSGLevel
 
 -(void)startLevel;
