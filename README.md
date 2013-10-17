@@ -11,8 +11,11 @@ Game written for iOS using the new SpriteKit.
 The project is part way through map generation. A maze is generated
 using a depth first implamentation. This is then turned into a map
 in the map builder. Once finished a character will be able to explore
-the map without. The generated maze is currently shown in the bottom
-left of the screen and as not been turned into a full blown map.
+the map and fighting off enemies to find the exit.
+
+The floor tiles make use of my other project the [TWTiledSprite](https://github.com/bloggertom/TWTiledSpriteNode)
+which takes a single of multiple texters and tiles them across the
+size of the sprite node.
 
 There are currently debugging tiles around the edge of this maze which will
 become the walls when finished. I have plans to try and make a stand allown
