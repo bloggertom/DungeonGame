@@ -10,10 +10,12 @@
 
 #define kSpriteSize 32
 #define DEBUG_COLLISIONS 0
-#define kWorldSize 2000
+#define kWorldSize 2100.0
+
 #define kWorldCenter 1000
 #define kNumTilesTextures 4
-#define kGroundTileSize 300
+#define kGroundTileSize 300.0
+#define kMazeSize kWorldSize-(2*kGroundTileSize)
 typedef void (^DSGLoadAssesCompleteHandler)(void);
 
 typedef enum : uint8_t {

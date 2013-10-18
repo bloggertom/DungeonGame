@@ -60,21 +60,14 @@
 
 #pragma mark - Building Map
 -(void)addBackground{
-	CIFilter *gamma = [CIFilter filterWithName:@"CIExposureAdjust"];
-	[gamma setDefaults];
-	[gamma setValue:[NSNumber numberWithFloat:-1] forKey:@"inputEV"];
-	if (!gamma) {
-		NSLog(@"Gamma FAIL!");
-	}
-	SKEffectNode *darkness = [[SKEffectNode alloc]init];
-	darkness.filter = gamma;
-	darkness.shouldEnableEffects = YES;
-	darkness.shouldRasterize = YES;
+	SKShapeNode *sqare = [SKShapeNode new];
+	sqare.path = CGPathCreateWithRect(CGRectMake(0, 0, kWorldSize-(2*kGroundTileSize), kWorldSize-(2*kGroundTileSize)),nil);
+	[self addChildNode:sqare atWorldLayer:DSGWorldLayerGround];
 	for (SKSpriteNode *node in sBackgroundTiles) {
 		NSLog(@"For loop");
 		[self addChildNode:node atWorldLayer:DSGWorldLayerGround];
 	}
-	NSLog(@"children %ui",darkness.children.count);
+	
 	
 }
 

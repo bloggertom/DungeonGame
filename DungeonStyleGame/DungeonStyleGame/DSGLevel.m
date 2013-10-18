@@ -178,19 +178,16 @@
 	
 	
 	if (self.hero) {
-		CGPoint pos = CGPointMake(-(self.hero.position.x)+CGRectGetMidX(self.frame), -(self.hero.position.y)+CGRectGetMidY(self.frame));
+		CGPoint pos = self.world.position;
 		CGPoint heroPos = self.hero.position;
-		CGPoint newPos;
-		CGSize worldsize = [self.world calculateAccumulatedFrame].size;
-		if (heroPos.x > (0 + (self.frame.size.width/2)) && heroPos.x < (worldsize.width -(self.frame.size.width/2))) {
-			newPos.x = pos.x;
-			
-		}
 		
-		if (heroPos.y > (0 + (self.frame.size.height/2)) && heroPos.y < (worldsize.height - (self.frame.size.height/2))) {
-			newPos.y = pos.y;
+		if (heroPos.x > CGRectGetMidX(self.frame) && heroPos.x < (kMazeSize - CGRectGetMidX(self.frame))) {
+			pos.x = (-(self.hero.position.x)+CGRectGetMidX(self.frame));
 		}
-		self.world.position = newPos;
+		if (heroPos.y > CGRectGetMidY(self.frame) && heroPos.y < (kMazeSize - CGRectGetMidY(self.frame))){
+			pos.y = (-(self.hero.position.y)+CGRectGetMidY(self.frame));
+		}
+		self.world.position = pos;
 	}
 	
 }
