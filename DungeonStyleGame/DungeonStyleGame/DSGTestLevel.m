@@ -41,7 +41,7 @@
 
 -(void)startLevel{
 		//let the games begin
-	DSGWizard *hero = [[DSGWizard alloc]initAtPosition:CGPointMake(200,200)];
+	DSGWizard *hero = [[DSGWizard alloc]initAtPosition:CGPointMake(500,500)];
 	NSLog(@"Width %f, Height %f", hero.size.width, hero.size.height);
 	DSGGrub *grub = [[DSGGrub alloc]initAtPosition:CGPointMake(300, 300)];
 	[self.monsters addObject:grub];
@@ -60,19 +60,21 @@
 
 #pragma mark - Building Map
 -(void)addBackground{
-	int count = 0;
-		//SKLabelNode *label;
-		//SKShapeNode *square = [[SKShapeNode alloc]init];
-		//square.strokeColor = [SKColor blueColor];
-		//square.path = CGPathCreateWithRect(CGRectMake(0, 0, 500, 500),nil);
-		//[self addChildNode:square atWorldLayer:DSGWorldLayerGround];
-	for (SKNode *node in sBackgroundTiles) {
-		
-		[self addChildNode:node atWorldLayer:DSGWorldLayerGround];
-
-		
-		count++;
+	CIFilter *gamma = [CIFilter filterWithName:@"CIExposureAdjust"];
+	[gamma setDefaults];
+	[gamma setValue:[NSNumber numberWithFloat:-1] forKey:@"inputEV"];
+	if (!gamma) {
+		NSLog(@"Gamma FAIL!");
 	}
+	SKEffectNode *darkness = [[SKEffectNode alloc]init];
+	darkness.filter = gamma;
+	darkness.shouldEnableEffects = YES;
+	darkness.shouldRasterize = YES;
+	for (SKSpriteNode *node in sBackgroundTiles) {
+		NSLog(@"For loop");
+		[self addChildNode:node atWorldLayer:DSGWorldLayerGround];
+	}
+	NSLog(@"children %ui",darkness.children.count);
 	
 }
 

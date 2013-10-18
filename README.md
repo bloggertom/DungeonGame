@@ -35,3 +35,7 @@ to move the wizard around the screen and attack the grub.
 ##Sprites
 All sprite are made by me which is why the art is amateurish but hell
 I wanted to give it a bash.
+
+##Known Bugs
+Currently if a wall tile is too large it will allow the character to wonder off
+screen.

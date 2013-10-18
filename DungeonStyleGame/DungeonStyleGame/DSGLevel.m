@@ -22,11 +22,52 @@
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-			
 			//create a world
 		_world = [[SKNode alloc]init];
 		[_world setName:@"world"];
 		
+			//create lighting effect
+		SKEffectNode *blur = [[SKEffectNode alloc]init];
+		CIFilter *filter = [CIFilter filterWithName:@"CIGaussianBlur"];
+		[filter setDefaults];
+		[filter setValue:[NSNumber numberWithFloat:30.0] forKey:@"inputRadius"];
+		blur.filter = filter;
+		
+		
+			//create node to hold shadow
+		SKShapeNode *shadow = [[SKShapeNode alloc]init];
+		CGRect frame = CGRectInset(self.frame, -50, -50);
+			//create shape paths
+		UIBezierPath *blurpath = [UIBezierPath bezierPathWithRect:frame];
+		blurpath.usesEvenOddFillRule = YES;
+		UIBezierPath *circle = [UIBezierPath bezierPathWithOvalInRect:frame];
+			//remove inner circle
+		[blurpath appendPath:circle];
+		shadow.path = blurpath.CGPath;
+		shadow.strokeColor = [UIColor blackColor];
+		shadow.fillColor = [UIColor blackColor];
+		shadow.lineWidth = 1;
+		shadow.alpha = 0.7;
+		
+		
+			//add a border
+		UIBezierPath *solidPath = [UIBezierPath bezierPathWithRect:self.frame];
+		SKShapeNode *border = [[SKShapeNode alloc]init];
+		border.path = solidPath.CGPath;
+		border.strokeColor = [UIColor blackColor];
+		border.lineWidth = 1;
+		border.alpha = 0.7;
+		border.glowWidth = 5;
+		
+			
+		
+			//effects.
+		[blur addChild:shadow];
+		[self addChild:blur];
+		[self addChild:border];
+		
+		blur.shouldEnableEffects =YES;
+		blur.shouldRasterize = YES;
 			//give it layers
 		_layers = [[NSMutableArray alloc]init];
 		for(int i=0; i< kWorldLayerCount; i++){
@@ -133,6 +174,25 @@
 	
 	[self addChildNode:_dbugOverlay atWorldLayer:DSGDebugLayer];
 #endif
+	
+	
+	
+	if (self.hero) {
+		CGPoint pos = CGPointMake(-(self.hero.position.x)+CGRectGetMidX(self.frame), -(self.hero.position.y)+CGRectGetMidY(self.frame));
+		CGPoint heroPos = self.hero.position;
+		CGPoint newPos;
+		CGSize worldsize = [self.world calculateAccumulatedFrame].size;
+		if (heroPos.x > (0 + (self.frame.size.width/2)) && heroPos.x < (worldsize.width -(self.frame.size.width/2))) {
+			newPos.x = pos.x;
+			
+		}
+		
+		if (heroPos.y > (0 + (self.frame.size.height/2)) && heroPos.y < (worldsize.height - (self.frame.size.height/2))) {
+			newPos.y = pos.y;
+		}
+		self.world.position = newPos;
+	}
+	
 }
 #pragma mark - Controls
 #pragma mark - Touches
@@ -142,7 +202,7 @@
 	if([touches count] == 1 && ![self.hero targetTouch]){
 			//set heros target location to location of touch.
 		UITouch *touch = [touches anyObject];
-		CGPoint position = [touch locationInNode:self];
+		CGPoint position = [touch locationInNode:self.world];
 		[self.hero setTargetLocation:position];
 		NSLog(@"Target X %f, Target Y %f", position.x, position.y);
 		[self.hero setTargetTouch:touch];//needed if player drags finger
