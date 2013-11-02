@@ -137,11 +137,24 @@
 	}
 		//if player want to attack
 	if (self.hero.attackRequested) {
-			//reset boolean
-		self.hero.attackRequested = NO;
 			//animate attacking.
-		self.hero.requestedAnimation = DSGAnimationStateAttacking;
+		self.hero.requestedAnimation = DSGAnimationStateStartAttack;
+		self.hero.attackRequested = NO;
+		
+		/*if (self.hero.requestedAnimation == DSGAnimationStateIdle) {
+			NSLog(@"Start");
+			
+		}else if (self.hero.attacksRequested > 0){
+			NSLog(@"Continue %d", self.hero.attacksRequested);
+			self.hero.requestedAnimation = DSGAnimationStateAttacking;
+		}else{
+			NSLog(@"End");
+			self.hero.requestedAnimation = DSGAnimationStateEndAttack;
+			self.hero.attackRequested = NO;
+		}*/
+		
 	}
+	
 
 }
 
@@ -203,7 +216,9 @@
 		[self.hero setTargetLocation:position];
 		NSLog(@"Target X %f, Target Y %f", position.x, position.y);
 		[self.hero setTargetTouch:touch];//needed if player drags finger
-		[self.hero requestMovement:YES];
+		if(!self.hero.attackRequested){
+			[self.hero requestMovement:YES];
+		}
 	}
 }
 
@@ -215,7 +230,12 @@
 }
 
 -(void)requestAttack{
-	[self.hero requestAttack:YES];
+	if (self.hero.attackingQueue == 0) {
+		self.hero.attackRequested = YES;
+	}
+	NSLog(@"Request attack");
+	self.hero.attackingQueue++;
+	
 }
 
 

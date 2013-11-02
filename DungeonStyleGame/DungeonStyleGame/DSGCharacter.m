@@ -21,6 +21,8 @@
 	if(self){
 		self.position = position;
 		_movementSpeed = defaultSpeed;
+		_attackingQueue = 0;
+		_dispatchAttackingQueue = dispatch_queue_create("com.dungeon.attack", NULL);
 	}
 	return self;
 }
@@ -29,7 +31,10 @@
 		//NSLog(@"Update hero");
 	if (_isAnimated) {
 			//if isAnimation animate god damn it!
-		[self processAnimationRequest];
+		
+			[self processAnimationRequest];
+		
+		
 	}
 	
 }
@@ -40,15 +45,21 @@
 		//check animation which needs to be run
 	switch (_requestedAnimation) {
 		case DSGAnimationStateWalking:
-				//NSLog(@"Running walking animation");
+			NSLog(@"Running walking animation");
 			[self fireWalkAnimation];
 			break;
 		case DSGAnimationStateIdle:
 				//NSLog(@"Running idle");
 			[self idle];
 			break;
+		case DSGAnimationStateStartAttack:
+			[self startAttackingAnimation];
+			break;
 		case DSGAnimationStateAttacking:
-			[self fireAttackingAnimation];
+				[self processAttackingQueue];
+			break;
+		case DSGAnimationStateEndAttack:
+			[self endAttackingAnimation];
 			break;
 		default:
 			break;
@@ -79,7 +90,15 @@
 -(void)fireAttackingAnimation{
 		//Overridden
 }
-
+-(void)startAttackingAnimation{
+		//Overridden
+}
+-(void)processAttackingQueue{
+		//Overridden
+}
+-(void)endAttackingAnimation{
+		//Overridden
+}
 -(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state{
 		//check if action is already being run
 	SKAction *action = [self actionForKey:key];
@@ -97,7 +116,6 @@
 	SKAction *squence = [SKAction sequence:@[animation, completion]];
 	[self runAction:squence withKey:key];
 }
-
 -(void)idle{
 		//this is what we do when we idle
 	SKTexture *n =[[self idleFrames]objectAtIndex:_facing];//facing corresponds to the index of the needed idle frame
@@ -110,6 +128,7 @@
 }
 
 -(void)animationHasFinished:(DSGAnimationState)animationState{
+		//NSLog(@"animation has finished");
 	[self animationDidFinish:(DSGAnimationState)animationState];
 }
 

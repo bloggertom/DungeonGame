@@ -79,8 +79,11 @@
 
 -(IBAction)attack:(id)sender{
 		//ATTACK!
+	
 	SKView *view = (SKView*)self.view;
 	DSGTestLevel *scene = (DSGTestLevel *)view.scene;
 	[scene requestAttack];
+	
+	
 }
 @end

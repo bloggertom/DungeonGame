@@ -26,7 +26,9 @@ typedef enum : uint8_t{
 typedef enum : uint8_t{
 	DSGAnimationStateIdle=0,
 	DSGAnimationStateWalking,
+	DSGAnimationStateStartAttack,
 	DSGAnimationStateAttacking,
+	DSGAnimationStateEndAttack,
 	DSGAnimationStateDieing
 }DSGAnimationState;
 
@@ -42,7 +44,9 @@ typedef enum : uint8_t{
 @property (nonatomic)CGPoint targetDirection;
 @property (nonatomic, setter = requestMovement:)BOOL movementRequested;
 @property (nonatomic, setter = requestAttack:)BOOL attackRequested;
+@property (nonatomic)NSInteger attackingQueue;
 @property (nonatomic)BOOL isAnimated;
+@property (nonatomic)dispatch_queue_t dispatchAttackingQueue;
 	//@property (nonatomic)CGRect collisionBox;
 
 
@@ -52,7 +56,9 @@ typedef enum : uint8_t{
 -(void)moveInDirection:(CGPoint)direction withTimeInterval:(NSTimeInterval)timeInterval;
 -(void)updateForTimeIntervale:(NSTimeInterval)time;
 
--(void)fireAttackingAnimation;
+-(void)startAttackingAnimation;
+-(void)processAttackingQueue;
+-(void)endAttackingAnimation;
 -(void)fireAnimation:(NSArray *)frames forKey:(NSString *)key forState:(DSGAnimationState)state;
 -(void)animationDidFinish:(DSGAnimationState)animationState;
 

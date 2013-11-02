@@ -138,12 +138,14 @@
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionUp]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Up"] atPosition:CGPointMake(mapPoint.x, mapPoint.y + size.height)];
 		wall.size = CGSizeMake(size.width*3, size.height);
+		[wall configurePhysics];
 		[walls addObject:wall];
 	}
 		//right
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionRight]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Right"] atPosition:CGPointMake(mapPoint.x + size.width, mapPoint.y)];
 		wall.size = CGSizeMake(size.width, size.height*3);
+		[wall configurePhysics];
 		[walls addObject:wall];
 		
 	}
@@ -151,6 +153,7 @@
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionLeft]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Left"] atPosition:CGPointMake(mapPoint.x - size.width, mapPoint.y)];
 		wall.size = CGSizeMake(size.width, size.height*3);
+		[wall configurePhysics];
 		[walls addObject:wall];
 		
 	}
@@ -158,6 +161,7 @@
 	if ([[tile.walls objectAtIndex:DSGMazeDirectionDown]isKindOfClass:[DSGTile class]]) {
 		DSGWall *wall = [[DSGWall alloc]initWithTexture:[[SKTextureAtlas atlasNamed:@"Debug"]textureNamed:@"Down"] atPosition:CGPointMake(mapPoint.x, mapPoint.y - size.height)];
 		wall.size = CGSizeMake(size.width*3, size.height);
+		[wall configurePhysics];
 		[walls addObject:wall];
 	}
 	

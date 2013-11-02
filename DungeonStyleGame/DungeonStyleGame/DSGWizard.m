@@ -20,7 +20,6 @@
 #define kMagicMissileFrames 4
 #define kMagicMissileDistance 1000
 @implementation DSGWizard
-
 -(id)initAtPosition:(CGPoint)position{
 	SKTextureAtlas *atlas = [SKTextureAtlas atlasNamed:@"Wizard_Idle"];
 	SKTexture *texture = [atlas textureNamed:@"Idle_right"];
@@ -50,65 +49,83 @@
 		
 }
 
--(void)fireAttackingAnimation{
+-(void)startAttackingAnimation{
 		//check direction we're facing.
+	NSArray *frames = nil;
 	switch (self.isFacing) {
 		case DSGCharacterFacingRight:
-			[self fireMagicMissileWithAnimationFrames:[self firingRightFrames]];
+			frames = [self firingRightFrames];
 			break;
 		case DSGCharacterFacingLeft:
-			[self fireMagicMissileWithAnimationFrames:[self firingLeftFrames]];
+			frames = [self firingLeftFrames];
+			break;
+		default:
+			break;
+	}
+	[self fireAnimation:[frames subarrayWithRange:NSMakeRange(0, 5)] forKey:@"startAttack" forState:DSGAnimationStateStartAttack];
+}
+-(void)processAttackingQueue{
+	NSLog(@"Continue");
+	if (self.attackingQueue>0) {
+		self.attackingQueue -= 1;
+		[self fireMagicMissile];
+	}
+	
+	
+	
+}
+-(void)endAttackingAnimation{
+	NSArray *frames = nil;
+	switch (self.isFacing) {
+		case DSGCharacterFacingRight:
+			frames = [self firingRightFrames];
+			break;
+		case DSGCharacterFacingLeft:
+			frames = [self firingLeftFrames];
 			break;
 		default:
 			break;
 	}
 	
+	[self fireAnimation:[frames subarrayWithRange:NSMakeRange(6, 1)]  forKey:@"endAttack" forState:DSGAnimationStateEndAttack];
 }
-
 -(void)animationDidFinish:(DSGAnimationState)animationState{
 		//once we're done killing just hang out.
 	switch (animationState) {
-		case DSGAnimationStateAttacking:
-			if (!self.attackRequested) {
-				self.requestedAnimation = DSGAnimationStateIdle;
-			}
+		case DSGAnimationStateStartAttack:
+			self.requestedAnimation = DSGAnimationStateAttacking;
 			break;
-			
+		case DSGAnimationStateAttacking:
+				//NSLog(@"Ending start %d", self.attacksRequested);
+				if (self.attackingQueue == 0) {
+					self.requestedAnimation = DSGAnimationStateEndAttack;
+				}
+			break;
+		case DSGAnimationStateEndAttack:
+			self.requestedAnimation = DSGAnimationStateIdle;
+			break;
 		default:
 			break;
 	}
 }
+
+/*
 -(void)fireMagicMissileWithAnimationFrames:(NSArray*)frames{
 	
-		//fast and small needs exact collision precision
-	self.physicsBody.usesPreciseCollisionDetection = YES;
 		//check we're not already doing it.
 	SKAction *action = [self actionForKey:@"firing"];
 	if (action) {
 		return;
 	}
-	
-		//build animation squence
-	SKAction *animation = [SKAction runBlock:^{
-		[self fireAnimation:frames forKey:@"firing" forState:DSGAnimationStateAttacking];
-	}];
+		//build animation
+	[self fireAnimation:frames forKey:@"startAttack" forState:DSGAnimationStateStartAttack];
 		//fire projectile half way through animation 0.4 seconds in.
-	SKAction *pause = [SKAction waitForDuration:0.4];
-	SKAction *fire = [SKAction runBlock:^{
-		[self fireMagicMissile];//FIRE ZEE MISSILE!
-	}];
-	
-		//build squence
-	SKAction *fireSequence = [SKAction sequence:@[pause,fire]];
-		//build group to run simaltaniously.
-	SKAction *group = [SKAction group:@[animation, fireSequence]];
-	
-		//run them
-	[self runAction:group withKey:@"missile"];
-	self.physicsBody.usesPreciseCollisionDetection = NO;
+		
 }
+*/
 -(void)fireMagicMissile{
 		//retrieve scene
+	NSLog(@"firing");
 	DSGLevel *scene = (DSGLevel *)[self scene];
 	
 		//create magic missile
@@ -165,12 +182,16 @@
 		//run firing animation
 	[magicMissile runAction:repeater];
 		//add missile to world
-	[scene addChildNode:magicMissile atWorldLayer:DSGCharacterLayer];
+	
 	
 		//animate it moving across screen
 	SKAction *movement = [SKAction moveByX:x y:y duration:1];
 	SKAction *removal = [SKAction removeFromParent];
+	
+	[scene addChildNode:magicMissile atWorldLayer:DSGCharacterLayer];
 	[magicMissile runAction:[SKAction sequence:@[movement, removal]]];
+	[self animationDidFinish:DSGAnimationStateAttacking];
+	
 	
 }
 

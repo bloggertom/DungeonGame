@@ -97,9 +97,15 @@
 			DSGTile *temp = [stack pop];
 			_currentTile = temp;
 			
-				//if all else fails pick a random tile and go from there (never called, currently legacy code)
+				//if all else fails pick a random tile and go from there (never called).
 		}else{
-			NSArray *unvisited = [_currentMaze.mazeTiles filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"visited == NO"]];
+			NSArray *unvisited = [_currentMaze.mazeTiles filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+				if([evaluatedObject isKindOfClass:[DSGTile class]]){
+					DSGTile *ob = (DSGTile *)evaluatedObject;
+					return (!ob.visited);
+				}
+				return NO;
+			}]];
 			int index = arc4random_uniform((int)[unvisited count]);
 			_currentTile = [unvisited objectAtIndex:index];
 			_currentTile.visited = YES;
